@@ -50,6 +50,9 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
 
     fig = go.Figure()
 
+    # Common hoverlabel style
+    hl_style = dict(bgcolor="#1c2129", bordercolor="#363b44", font=dict(color="#e8e6e3", size=13))
+
     fig.add_trace(go.Scatter(
         x=dates,
         y=cumulative,
@@ -58,7 +61,8 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
         line=dict(color="#5b8def", width=2),
         fill="tozeroy",
         fillcolor="rgba(91,141,239,0.08)",
-        hovertemplate="Cumulative: MYR %{y:.2f}<extra></extra>"
+        hovertemplate="Cumulative: MYR %{y:.2f}<extra></extra>",
+        hoverlabel=hl_style,
     ))
 
     for status_label, status_filter, color_val in [
@@ -88,6 +92,7 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
             ),
             hovertemplate="%{customdata}<extra></extra>",
             customdata=[hover_texts[i] for i in indices],
+            hoverlabel=hl_style,
             yaxis="y2"
         ))
 
@@ -126,11 +131,6 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
             y=1.1,
         ),
         hovermode="closest",
-        hoverlabel=dict(
-            bgcolor="#1c2129",
-            bordercolor="#262b33",
-            font=dict(color="#e8e6e3", size=13),
-        ),
         margin=dict(l=60, r=60, t=50, b=40),
         height=400,
     )
