@@ -1,5 +1,4 @@
 import plotly.graph_objects as go
-import plotly.express as px
 
 
 def generate_chart(bets, output_path="output/cumulative_pnl.html"):
@@ -9,7 +8,6 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
     )
 
     dates = [b["bet_date_parsed"] for b in resolved]
-    date_labels = [d.strftime("%b %d") for d in dates]
     profits = [b["profit"] for b in resolved]
     stakes = [b["stake"] for b in resolved]
 
@@ -18,20 +16,6 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
     for p in profits:
         cum += p
         cumulative.append(round(cum, 2))
-
-    colors = []
-    for b in resolved:
-        s = b["status"]
-        if s == "Won":
-            colors.append("#5cb87a")
-        elif s == "Lost":
-            colors.append("#c8814a")
-        elif s in ("Half-won", "Half-lost"):
-            colors.append("#d4a85c")
-        elif s == "Draw":
-            colors.append("#9ca3a0")
-        else:
-            colors.append("#6b7278")
 
     sizes = [max(6, s / 8) for s in stakes]
 
@@ -50,9 +34,6 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
 
     fig = go.Figure()
 
-    # Common hoverlabel style
-    hl_style = dict(bgcolor="#1c2129", bordercolor="#363b44", font=dict(color="#e8e6e3", size=13))
-
     fig.add_trace(go.Scatter(
         x=dates,
         y=cumulative,
@@ -62,7 +43,6 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
         fill="tozeroy",
         fillcolor="rgba(91,141,239,0.08)",
         hovertemplate="Cumulative: MYR %{y:.2f}<extra></extra>",
-        hoverlabel=hl_style,
     ))
 
     for status_label, status_filter, color_val in [
@@ -92,7 +72,6 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
             ),
             hovertemplate="%{customdata}<extra></extra>",
             customdata=[hover_texts[i] for i in indices],
-            hoverlabel=hl_style,
             yaxis="y2"
         ))
 
@@ -136,4 +115,46 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
     )
 
     fig.write_html(output_path, include_plotlyjs="cdn", full_html=False)
+
+    # Inject hoverlabel bgcolor (Plotly 6.x drops it from layout) + JS to fix SVG attributes
+    import re
+    with open(output_path, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    # Force bgcolor into the layout hoverlabel
+    html = re.sub(
+        r'"hoverlabel"\s*:\s*\{',
+        '"hoverlabel":{"bgcolor":"#e8e6e3","bordercolor":"#363b44","font":{"color":"#000000","size":13},',
+        html,
+    )
+
+    # Append JS that patches SVG attributes (Plotly uses SVG fill attributes, not CSS)
+    patch = """<script>
+(function(){
+  var D='#e8e6e3',L='#000000',B='#363b44';
+  setInterval(function(){
+    var tags=document.querySelectorAll('.hoverlayer rect,.hoverlayer text,.hoverlayer path');
+    for(var i=0;i<tags.length;i++){
+      var t=tags[i];
+      if(t.tagName==='RECT'||t.tagName==='rect'){
+        t.setAttribute('fill',D);
+        t.setAttribute('stroke',B);
+      }
+      if(t.tagName==='TEXT'||t.tagName==='text'||t.tagName==='tspan'){
+        t.setAttribute('fill',L);
+        t.setAttribute('font-size','13');
+        t.setAttribute('font-weight','400');
+      }
+      if(t.tagName==='PATH'||t.tagName==='path'){
+        t.setAttribute('stroke',B);
+      }
+    }
+  },50);
+})();
+</script>"""
+    html = html.replace("</body>", patch + "</body>")
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(html)
+
     return output_path

@@ -547,6 +547,45 @@ renderTable(betData.reverse());
 .form-actions { display:flex; gap:10px; justify-content:flex-end; margin-top:4px; }
 .form-card textarea:focus { border-color:#5b8def; }
 </style>
+<script>
+// Force-fix Plotly tooltip styling the moment they appear in the DOM
+(function() {
+  function fix(el) {
+    if (!el || el.dataset.hoverfixed) return;
+    el.dataset.hoverfixed = '1';
+    el.style.setProperty('background', '#1c2129', 'important');
+    el.style.setProperty('border', '1px solid #363b44', 'important');
+    el.style.setProperty('border-radius', '6px', 'important');
+    el.style.setProperty('box-shadow', '0 4px 12px rgba(0,0,0,0.4)', 'important');
+    el.style.setProperty('color', '#e8e6e3', 'important');
+    el.style.setProperty('font-size', '13px', 'important');
+    // Fix all children (text lines inside tooltip)
+    el.querySelectorAll('*').forEach(function(c) {
+      c.style.setProperty('color', '#e8e6e3', 'important');
+      c.style.setProperty('fill', '#e8e6e3', 'important');
+      c.style.setProperty('font-size', '13px', 'important');
+      if (c.tagName === 'RECT' || c.tagName === 'rect') {
+        c.style.setProperty('fill', '#1c2129', 'important');
+        c.style.setProperty('stroke', '#363b44', 'important');
+      }
+    });
+  }
+  // Scan every 200ms for new Plotly hover elements
+  setInterval(function() {
+    document.querySelectorAll('.hoverlayer .hovertext, .hoverlayer g.hovertext, [class*="hovertext"]').forEach(fix);
+    // Also fix any rect inside hover groups
+    document.querySelectorAll('.hoverlayer rect, .hoverlayer g rect').forEach(function(r) {
+      r.style.setProperty('fill', '#1c2129', 'important');
+      r.style.setProperty('stroke', '#363b44', 'important');
+    });
+    // Fix any text inside hover groups
+    document.querySelectorAll('.hoverlayer text, .hoverlayer g text').forEach(function(t) {
+      t.style.setProperty('fill', '#e8e6e3', 'important');
+      t.style.setProperty('font-size', '13px', 'important');
+    });
+  }, 200);
+})();
+</script>
 
 <div class="toast" id="toast"></div>
 
