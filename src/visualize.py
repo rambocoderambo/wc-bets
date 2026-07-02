@@ -22,12 +22,13 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
     hover_texts = []
     for b in resolved:
         pl_str = f"+{b['profit']:.2f}" if b['profit'] > 0 else f"{b['profit']:.2f}"
+        bonus_str = f" (Bonus: MYR {b['bonus']:.0f})" if b.get("bonus") and b["bonus"] > 0 else ""
         hover_texts.append(
             f"<b>{b['bet']}</b><br>"
             f"Date: {b['bet_date']}<br>"
             f"Market: {b['market']}<br>"
             f"Odds: {b['odds']}<br>"
-            f"Stake: MYR {b['stake']}<br>"
+            f"Stake: MYR {b['stake']}{bonus_str}<br>"
             f"P&L: MYR {pl_str}<br>"
             f"Status: {b['status']}"
         )

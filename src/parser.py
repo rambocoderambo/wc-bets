@@ -69,7 +69,7 @@ def _parse_format1(block):
     ret_match = re.search(r"Return:\s*\n\s*([\d.]+)", text)
     bet["return"] = float(ret_match.group(1)) if ret_match else None
 
-    bonus_match = re.search(r"Bonus:\s*\n\s*([\d.]+)", text)
+    bonus_match = re.search(r"Bonus:\s*([\d.]+)", text)
     bet["bonus"] = float(bonus_match.group(1)) if bonus_match else None
 
     bet["profit"] = round(bet["return"] - bet["stake"], 2) if bet["return"] is not None and bet["stake"] is not None else None
