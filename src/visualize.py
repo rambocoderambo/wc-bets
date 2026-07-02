@@ -128,28 +128,29 @@ def generate_chart(bets, output_path="output/cumulative_pnl.html"):
         html,
     )
 
-    # Append JS that patches SVG attributes (Plotly uses SVG fill attributes, not CSS)
+    # Append JS that patches SVG attributes + CSS properties
     patch = """<script>
 (function(){
   var D='#e8e6e3',L='#000000',B='#363b44';
   setInterval(function(){
-    var tags=document.querySelectorAll('.hoverlayer rect,.hoverlayer text,.hoverlayer path');
+    var tags=document.querySelectorAll('.hoverlayer *');
     for(var i=0;i<tags.length;i++){
       var t=tags[i];
-      if(t.tagName==='RECT'||t.tagName==='rect'){
+      var tag=t.tagName;
+      if(tag==='RECT'||tag==='rect'){
         t.setAttribute('fill',D);
         t.setAttribute('stroke',B);
       }
-      if(t.tagName==='TEXT'||t.tagName==='text'||t.tagName==='tspan'){
+      if(tag==='TEXT'||tag==='text'||tag==='tspan'||tag==='DIV'||tag==='SPAN'){
         t.setAttribute('fill',L);
+        t.style.setProperty('color',L,'important');
         t.setAttribute('font-size','13');
-        t.setAttribute('font-weight','400');
       }
-      if(t.tagName==='PATH'||t.tagName==='path'){
+      if(tag==='PATH'||tag==='path'){
         t.setAttribute('stroke',B);
       }
     }
-  },50);
+  },20);
 })();
 </script>"""
     html = html.replace("</body>", patch + "</body>")

@@ -73,6 +73,14 @@ def _parse_format1(block):
     bet["bonus"] = float(bonus_match.group(1)) if bonus_match else None
 
     bet["profit"] = round(bet["return"] - bet["stake"], 2) if bet["return"] is not None and bet["stake"] is not None else None
+    # If bonus >= stake, the stake was free credits — user risked 0, so profit = return
+    if bet.get("bonus") and bet["bonus"] > 0 and bet.get("stake"):
+        if bet["bonus"] >= bet["stake"]:
+            bet["profit"] = round(bet["return"], 2) if bet["return"] is not None else None
+        else:
+            # Partial bonus: effective stake = stake - bonus
+            effective_stake = bet["stake"] - bet["bonus"]
+            bet["profit"] = round(bet["return"] - effective_stake, 2) if bet["return"] is not None else None
 
     bet["market"] = _classify_market(bet.get("bet_type_raw", ""), bet.get("bet", ""))
     bet["source_format"] = 1
