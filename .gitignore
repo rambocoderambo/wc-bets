@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
+temp_bulk.txt
+temp_test.txt

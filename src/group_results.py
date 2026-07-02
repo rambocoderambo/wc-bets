@@ -1,0 +1,88 @@
+"""Complete World Cup 2026 group stage results (72 matches across 12 groups)."""
+
+GROUP_MATCHES = [
+    # Group A
+    ("Mexico", "South Africa", "2-0"),
+    ("South Korea", "Czech Republic", "2-1"),
+    ("Czech Republic", "South Africa", "1-1"),
+    ("Mexico", "South Korea", "1-0"),
+    ("Czech Republic", "Mexico", "0-3"),
+    ("South Africa", "South Korea", "1-0"),
+    # Group B
+    ("Canada", "Bosnia", "1-1"),
+    ("Qatar", "Switzerland", "1-1"),
+    ("Switzerland", "Bosnia", "4-1"),
+    ("Canada", "Qatar", "6-0"),
+    ("Switzerland", "Canada", "2-1"),
+    ("Bosnia", "Qatar", "3-1"),
+    # Group C
+    ("Brazil", "Morocco", "1-1"),
+    ("Haiti", "Scotland", "0-1"),
+    ("Scotland", "Morocco", "0-1"),
+    ("Brazil", "Haiti", "3-0"),
+    ("Morocco", "Haiti", "4-2"),
+    ("Scotland", "Brazil", "0-3"),
+    # Group D
+    ("USA", "Paraguay", "4-1"),
+    ("Australia", "Turkey", "2-0"),
+    ("USA", "Australia", "2-0"),
+    ("Turkey", "Paraguay", "0-1"),
+    ("Paraguay", "Australia", "0-0"),
+    ("Turkey", "USA", "3-2"),
+    # Group E
+    ("Germany", "Curacao", "7-1"),
+    ("Ivory Coast", "Ecuador", "1-0"),
+    ("Germany", "Ivory Coast", "2-1"),
+    ("Ecuador", "Curacao", "0-0"),
+    ("Curacao", "Ivory Coast", "0-2"),
+    ("Ecuador", "Germany", "2-1"),
+    # Group F
+    ("Netherlands", "Japan", "2-2"),
+    ("Sweden", "Tunisia", "5-1"),
+    ("Netherlands", "Sweden", "5-1"),
+    ("Tunisia", "Japan", "0-4"),
+    ("Japan", "Sweden", "1-1"),
+    ("Tunisia", "Netherlands", "1-3"),
+    # Group G
+    ("Belgium", "Egypt", "1-1"),
+    ("Iran", "New Zealand", "2-2"),
+    ("Belgium", "Iran", "0-0"),
+    ("New Zealand", "Egypt", "1-3"),
+    ("Egypt", "Iran", "1-1"),
+    ("New Zealand", "Belgium", "1-5"),
+    # Group H
+    ("Spain", "Cape Verde", "0-0"),
+    ("Saudi Arabia", "Uruguay", "1-1"),
+    ("Spain", "Saudi Arabia", "4-0"),
+    ("Uruguay", "Cape Verde", "2-2"),
+    ("Cape Verde", "Saudi Arabia", "0-0"),
+    ("Uruguay", "Spain", "0-1"),
+    # Group I
+    ("France", "Senegal", "3-1"),
+    ("Iraq", "Norway", "1-4"),
+    ("France", "Iraq", "3-0"),
+    ("Norway", "Senegal", "3-2"),
+    ("Norway", "France", "1-4"),
+    ("Senegal", "Iraq", "5-0"),
+    # Group J
+    ("Argentina", "Algeria", "3-0"),
+    ("Austria", "Jordan", "3-1"),
+    ("Argentina", "Austria", "2-0"),
+    ("Jordan", "Algeria", "1-2"),
+    ("Algeria", "Austria", "3-3"),
+    ("Jordan", "Argentina", "1-3"),
+    # Group K
+    ("Portugal", "DR Congo", "1-1"),
+    ("Uzbekistan", "Colombia", "1-3"),
+    ("Portugal", "Uzbekistan", "5-0"),
+    ("Colombia", "DR Congo", "1-0"),
+    ("Colombia", "Portugal", "0-0"),
+    ("DR Congo", "Uzbekistan", "3-1"),
+    # Group L
+    ("England", "Croatia", "4-2"),
+    ("Ghana", "Panama", "1-0"),
+    ("England", "Ghana", "0-0"),
+    ("Panama", "Croatia", "0-1"),
+    ("Croatia", "Ghana", "2-1"),
+    ("Panama", "England", "0-2"),
+]

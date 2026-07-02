@@ -1,0 +1,35 @@
+Purchase Ticket ID:859742603343208448
+Bet Ticket ID:859742603343208449
+Bet Date:2026/06/30 18:30
+Bet:Erling Haaland - Anytime Scorer
+Odds:
+1.79 EU
+Bet Type:
+Goalscorer
+Event:Ivory Coast vs Norway
+Event Date:2026/07/01 01:00
+League:World Cup 2026
+Stake:
+50.00 MYR
+Return:
+89.50 MYR
+Status:Won
+Result:-
+
+Purchase Ticket ID:859659239248535552
+Bet Ticket ID:859659239248535553
+Bet Date:2026/06/30 12:58
+Bet:Norway -0.25
+Odds:
+1.87 EU
+Bet Type:
+FT Asian Handicap
+Event:Ivory Coast vs Norway
+Event Date:2026/07/01 01:00
+League:World Cup 2026
+Stake:
+100.00 MYR
+Return:
+187.00 MYR
+Status:Won
+Result:1 : 2

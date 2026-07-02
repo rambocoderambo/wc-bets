@@ -1,0 +1,1107 @@
+Purchase Ticket ID:859629375564972032
+Bet Ticket ID:859629375564972033
+Bet Date:2026/06/30 11:00
+Bet:Netherlands
+Odds:1.88 EU
+Bet Type:[1:1]To Qualify Live Betting
+Event:Netherlands vs Morocco
+Event Date:2026/06/30 09:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 1
+
+Purchase Ticket ID:859561157815115776
+Bet Ticket ID:859561157815115777
+Bet Date:2026/06/30 06:29
+Bet:Netherlands -0.25
+Odds:2.04 EU
+Bet Type:FT Asian Handicap
+Event:Netherlands vs Morocco
+Event Date:2026/06/30 09:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:50.00 MYR
+Status:Half-lost
+Result:1 : 1
+
+Purchase Ticket ID:859086783706202112
+Bet Ticket ID:859086783706202113
+Bet Date:2026/06/28 23:04
+Bet:Germany -1.25
+Odds:1.73 EU
+Bet Type:FT Asian Handicap
+Event:Germany vs Paraguay
+Event Date:2026/06/30 04:30
+League:World Cup 2026
+Stake:100.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:858958162714886144
+Bet Ticket ID:858958162714886145
+Bet Date:2026/06/28 14:33
+Bet:Brazil -0.75
+Odds:1.94 EU
+Bet Type:FT Asian Handicap
+Event:Brazil vs Japan
+Event Date:2026/06/30 01:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:73.50 MYR
+Status:Half-won
+Result:2 : 1
+
+Purchase Ticket ID:858937024911671296
+Bet Ticket ID:858937024911671297
+Bet Date:2026/06/28 13:09
+Bet:Canada -0.5
+Odds:1.74 EU
+Bet Type:FT Asian Handicap
+Event:South Africa vs Canada
+Event Date:2026/06/29 03:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:87.00 MYR
+Status:Won
+Result:0 : 1
+
+Purchase Ticket ID:858681741274718208
+Bet Ticket ID:858681741274718209
+Bet Date:2026/06/27 20:14
+Bet:Argentina -2
+Odds:1.77 EU
+Bet Type:FT Asian Handicap
+Event:Jordan vs Argentina
+Event Date:2026/06/28 10:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:1 : 3
+
+Purchase Ticket ID:858846541543849984
+Bet Ticket ID:858846541543849985
+Bet Date:2026/06/28 07:09
+Bet:DR Congo -0.75
+Odds:1.92 EU
+Bet Type:FT Asian Handicap
+Event:DR Congo vs Uzbekistan
+Event Date:2026/06/28 07:30
+League:World Cup 2026
+Stake:50.00 MYR
+Return:96.00 MYR
+Status:Won
+Result:3 : 1
+
+Purchase Ticket ID:858566082582716416
+Bet Ticket ID:858566082582716417
+Bet Date:2026/06/27 12:35
+Bet:Portugal -0.5
+Odds:1.95 EU
+Bet Type:FT Asian Handicap
+Event:Colombia vs Portugal
+Event Date:2026/06/28 07:30
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:858565570781184000
+Bet Ticket ID:858565570781184001
+Bet Date:2026/06/27 12:33
+Bet:England -2
+Odds:1.87 EU
+Bet Type:FT Asian Handicap
+Event:Panama vs England
+Event Date:2026/06/28 05:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:0 : 2
+
+Purchase Ticket ID:858682566810181632
+Bet Ticket ID:858682566810181633
+Bet Date:2026/06/27 20:17
+Bet:England -2
+Odds:1.78 EU
+Bet Type:FT Asian Handicap
+Event:Panama vs England
+Event Date:2026/06/28 05:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:0 : 2
+
+Purchase Ticket ID:858535699753418752
+Bet Ticket ID:858535699753418753
+Bet Date:2026/06/27 10:34
+Bet:Belgium -2
+Odds:1.70 EU
+Bet Type:FT Asian Handicap
+Event:New Zealand vs Belgium
+Event Date:2026/06/27 11:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:85.00 MYR
+Status:Won
+Result:1 : 5
+
+Purchase Ticket ID:858157090882658304
+Bet Ticket ID:858157090882658305
+Bet Date:2026/06/26 09:29
+Bet:USA -0.5
+Odds:2.04 EU
+Bet Type:FT Asian Handicap
+Event:Turkey vs USA
+Event Date:2026/06/26 10:00
+League:World Cup 2026
+Stake:22.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:3 : 2
+
+Purchase Ticket ID:857849489854775296
+Bet Ticket ID:857849489854775297
+Bet Date:2026/06/25 13:07
+Bet:Japan -0.5
+Odds:1.87 EU
+Bet Type:FT Asian Handicap
+Event:Japan vs Sweden
+Event Date:2026/06/26 07:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:857847835180826624
+Bet Ticket ID:857847835180826625
+Bet Date:2026/06/25 13:01
+Bet:Germany -1
+Odds:1.89 EU
+Bet Type:FT Asian Handicap
+Event:Ecuador vs Germany
+Event Date:2026/06/26 04:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:2 : 1
+
+Purchase Ticket ID:857816918336905216
+Bet Ticket ID:857816918336905217
+Bet Date:2026/06/25 10:58
+Bet:Germany -0.5
+Odds:1.70 EU
+Bet Type:FT Asian Handicap
+Event:Ecuador vs Germany
+Event Date:2026/06/26 04:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:2 : 1
+
+Purchase Ticket ID:857753389764354048
+Bet Ticket ID:857753389764354049
+Bet Date:2026/06/25 06:45
+Bet:South Korea -0.75
+Odds:1.82 EU
+Bet Type:FT Asian Handicap
+Event:South Africa vs South Korea
+Event Date:2026/06/25 09:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 0
+
+Purchase Ticket ID:857572955084464128
+Bet Ticket ID:857572955084464129
+Bet Date:2026/06/24 18:48
+Bet:Over 2.75
+Odds:1.70 EU
+Bet Type:FT O/U
+Event:Morocco vs Haiti
+Event Date:2026/06/25 06:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:85.00 MYR
+Status:Won
+Result:4 : 2
+
+Purchase Ticket ID:857481592196243456
+Bet Ticket ID:857481592196243457
+Bet Date:2026/06/24 12:45
+Bet:Morocco -1.75
+Odds:1.74 EU
+Bet Type:FT Asian Handicap
+Event:Morocco vs Haiti
+Event Date:2026/06/25 06:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:137.00 MYR
+Status:Half-won
+Result:4 : 2
+
+Purchase Ticket ID:857573687036641280
+Bet Ticket ID:857573687036641281
+Bet Date:2026/06/24 18:51
+Bet:Bosnia and Herzegovina -1
+Odds:1.60 EU
+Bet Type:FT Asian Handicap
+Event:Bosnia and Herzegovina vs Qatar
+Event Date:2026/06/25 03:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:160.00 MYR
+Status:Won
+Result:3 : 1
+
+Purchase Ticket ID:857426849579073536
+Bet Ticket ID:857426849579073537
+Bet Date:2026/06/24 09:08
+Bet:Over 2
+Odds:1.63 EU
+Bet Type:FT O/U
+Event:Colombia vs DR Congo
+Event Date:2026/06/24 10:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 0
+
+Purchase Ticket ID:857426438960922624
+Bet Ticket ID:857426438960922625
+Bet Date:2026/06/24 09:06
+Bet:Over 2.25
+Odds:1.93 EU
+Bet Type:FT O/U
+Event:Colombia vs DR Congo
+Event Date:2026/06/24 10:00
+League:World Cup 2026
+Bonus:50.00 MYR
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 0
+
+Purchase Ticket ID:857393854205870080
+Bet Ticket ID:857393854205870081
+Bet Date:2026/06/24 06:57
+Bet:Croatia -1
+Odds:1.65 EU
+Bet Type:FT Asian Handicap
+Event:Panama vs Croatia
+Event Date:2026/06/24 07:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:0 : 1
+
+Purchase Ticket ID:857393227497111552
+Bet Ticket ID:857393227497111553
+Bet Date:2026/06/24 06:54
+Bet:Croatia -1
+Odds:1.65 EU
+Bet Type:FT Asian Handicap
+Event:Panama vs Croatia
+Event Date:2026/06/24 07:00
+League:World Cup 2026
+Bonus:24.00 MYR
+Stake:24.00 MYR
+Return:0.00 MYR
+Status:Draw
+Result:0 : 1
+
+Purchase Ticket ID:857394321052868608
+Bet Ticket ID:857394321052868609
+Bet Date:2026/06/24 06:58
+Bet:Croatia -1
+Odds:1.66 EU
+Bet Type:FT Asian Handicap
+Event:Panama vs Croatia
+Event Date:2026/06/24 07:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:0 : 1
+
+Purchase Ticket ID:857393500256903168
+Bet Ticket ID:857393500256903169
+Bet Date:2026/06/24 06:55
+Bet:Croatia -1
+Odds:1.65 EU
+Bet Type:FT Asian Handicap
+Event:Panama vs Croatia
+Event Date:2026/06/24 07:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:0 : 1
+
+Purchase Ticket ID:857132548802404352
+Bet Ticket ID:857132548802404353
+Bet Date:2026/06/23 13:38
+Bet:England -1.75
+Odds:1.79 EU
+Bet Type:FT Asian Handicap
+Event:England vs Ghana
+Event Date:2026/06/24 04:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:857128092937412608
+Bet Ticket ID:857128092937412609
+Bet Date:2026/06/23 13:21
+Bet:England -1.75
+Odds:1.79 EU
+Bet Type:FT Asian Handicap
+Event:England vs Ghana
+Event Date:2026/06/24 04:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:857208295143448576
+Bet Ticket ID:857208295143448577
+Bet Date:2026/06/23 18:39
+Bet:England -1.75
+Odds:1.72 EU
+Bet Type:FT Asian Handicap
+Event:England vs Ghana
+Event Date:2026/06/24 04:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:857371047455555584
+Bet Ticket ID:857371047455555585
+Bet Date:2026/06/24 05:26
+Bet:England -0.5
+Odds:1.75 EU
+Bet Type:[0:0]Live Betting Asian Handicap
+Event:England vs Ghana
+Event Date:2026/06/24 04:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:857102979558936576
+Bet Ticket ID:857102979558936577
+Bet Date:2026/06/23 11:41
+Bet:England -1.75
+Odds:1.80 EU
+Bet Type:FT Asian Handicap
+Event:England vs Ghana
+Event Date:2026/06/24 04:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:99.00 MYR
+Status:Cashed Out
+
+Purchase Ticket ID:857371121615020032
+Bet Ticket ID:857371121615020033
+Bet Date:2026/06/24 05:26
+Bet:England -0.5
+Odds:1.75 EU
+Bet Type:[0:0]Live Betting Asian Handicap
+Event:England vs Ghana
+Event Date:2026/06/24 04:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:857204923455651840
+Bet Ticket ID:857204923455651841
+Bet Date:2026/06/23 18:26
+Bet:Portugal -2
+Odds:1.70 EU
+Bet Type:FT Asian Handicap
+Event:Portugal vs Uzbekistan
+Event Date:2026/06/24 01:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:85.00 MYR
+Status:Won
+Result:5 : 0
+
+Purchase Ticket ID:857128035194429440
+Bet Ticket ID:857128035194429441
+Bet Date:2026/06/23 13:20
+Bet:Portugal -2
+Odds:1.80 EU
+Bet Type:FT Asian Handicap
+Event:Portugal vs Uzbekistan
+Event Date:2026/06/24 01:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:90.00 MYR
+Status:Won
+Result:5 : 0
+
+Purchase Ticket ID:857127928160002048
+Bet Ticket ID:857127928160002049
+Bet Date:2026/06/23 13:20
+Bet:Portugal -2
+Odds:1.80 EU
+Bet Type:FT Asian Handicap
+Event:Portugal vs Uzbekistan
+Event Date:2026/06/24 01:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:90.00 MYR
+Status:Won
+Result:5 : 0
+
+Purchase Ticket ID:857124768859217920
+Bet Ticket ID:857124768859217921
+Bet Date:2026/06/23 13:07
+Bet:Portugal -2
+Odds:1.80 EU
+Bet Type:FT Asian Handicap
+Event:Portugal vs Uzbekistan
+Event Date:2026/06/24 01:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:99.00 MYR
+Status:Cashed Out
+
+Purchase Ticket ID:857092293340635136
+Bet Ticket ID:857092293340635137
+Bet Date:2026/06/23 10:58
+Bet:Algeria -1
+Odds:1.81 EU
+Bet Type:FT Asian Handicap
+Event:Jordan vs Algeria
+Event Date:2026/06/23 11:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:1 : 2
+
+Purchase Ticket ID:857044218442096640
+Bet Ticket ID:857044218442096641
+Bet Date:2026/06/23 07:47
+Bet:Norway 0
+Odds:1.78 EU
+Bet Type:FT Asian Handicap
+Event:Norway vs Senegal
+Event Date:2026/06/23 08:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:89.00 MYR
+Status:Won
+Result:3 : 2
+
+Purchase Ticket ID:856727612646170624
+Bet Ticket ID:856727612646170625
+Bet Date:2026/06/22 10:49
+Bet:France -2.5
+Odds:1.76 EU
+Bet Type:FT Asian Handicap
+Event:France vs Iraq
+Event Date:2026/06/23 05:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:88.00 MYR
+Status:Won
+Result:3 : 0
+
+Purchase Ticket ID:856727283783360512
+Bet Ticket ID:856727283783360513
+Bet Date:2026/06/22 10:48
+Bet:Argentina -1
+Odds:1.89 EU
+Bet Type:FT Asian Handicap
+Event:Argentina vs Austria
+Event Date:2026/06/23 01:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:94.50 MYR
+Status:Won
+Result:2 : 0
+
+Purchase Ticket ID:856747370204553216
+Bet Ticket ID:856747370204553217
+Bet Date:2026/06/22 12:08
+Bet:Argentina -1
+Odds:1.84 EU
+Bet Type:FT Asian Handicap
+Event:Argentina vs Austria
+Event Date:2026/06/23 01:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:184.00 MYR
+Status:Won
+Result:2 : 0
+
+Purchase Ticket ID:856724099262189568
+Bet Ticket ID:856724099262189569
+Bet Date:2026/06/22 10:35
+Bet:Under 3.5
+Odds:2.02 EU
+Bet Type:[1:2]Live Betting O/U
+Event:New Zealand vs Egypt
+Event Date:2026/06/22 09:00
+League:World Cup 2026
+Bonus:50.00 MYR
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 3
+
+Purchase Ticket ID:856445599829164032
+Bet Ticket ID:856445599829164033
+Bet Date:2026/06/21 16:09
+Bet:Uruguay -1
+Odds:1.84 EU
+Bet Type:FT Asian Handicap
+Event:Uruguay vs Cape Verde
+Event Date:2026/06/22 06:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:2 : 2
+
+Purchase Ticket ID:856660314107355136
+Bet Ticket ID:856660314107355137
+Bet Date:2026/06/22 06:22
+Bet:Uruguay -1
+Odds:1.50 EU
+Bet Type:[0:1]Live Betting Asian Handicap
+Event:Uruguay vs Cape Verde
+Event Date:2026/06/22 06:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:2 : 2
+
+Purchase Ticket ID:856667291025874944
+Bet Ticket ID:856667291025874945
+Bet Date:2026/06/22 06:49
+Bet:Uruguay -0.75
+Odds:1.87 EU
+Bet Type:[1:1]Live Betting Asian Handicap
+Event:Uruguay vs Cape Verde
+Event Date:2026/06/22 06:00
+League:World Cup 2026
+Bonus:24.00 MYR
+Stake:24.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:2 : 2
+
+Purchase Ticket ID:856446309316591616
+Bet Ticket ID:856446309316591617
+Bet Date:2026/06/21 16:11
+Bet:Belgium -1
+Odds:1.73 EU
+Bet Type:FT Asian Handicap
+Event:Belgium vs Iran
+Event Date:2026/06/22 03:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:856443867434766336
+Bet Ticket ID:856443867434766337
+Bet Date:2026/06/21 16:02
+Bet:Belgium -1
+Odds:1.74 EU
+Bet Type:FT Asian Handicap
+Event:Belgium vs Iran
+Event Date:2026/06/22 03:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:856042732513390592
+Bet Ticket ID:856042732513390593
+Bet Date:2026/06/20 13:28
+Bet:Japan -0.75
+Odds:1.79 EU
+Bet Type:FT Asian Handicap
+Event:Tunisia vs Japan
+Event Date:2026/06/21 12:00
+League:World Cup 2026
+Stake:100.00 MYR
+Return:179.00 MYR
+Status:Won
+Result:0 : 4
+
+Purchase Ticket ID:856356367538245632
+Bet Ticket ID:856356367538245633
+Bet Date:2026/06/21 10:14
+Bet:Japan -1
+Odds:1.79 EU
+Bet Type:FT Asian Handicap
+Event:Tunisia vs Japan
+Event Date:2026/06/21 12:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:89.50 MYR
+Status:Won
+Result:0 : 4
+
+Purchase Ticket ID:856041865097740288
+Bet Ticket ID:856041865097740289
+Bet Date:2026/06/20 13:24
+Bet:Over 2.75
+Odds:1.70 EU
+Bet Type:FT O/U
+Event:Ecuador vs Curacao
+Event Date:2026/06/21 08:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:856041468677246976
+Bet Ticket ID:856041468677246977
+Bet Date:2026/06/20 13:23
+Bet:Germany -1
+Odds:1.86 EU
+Bet Type:FT Asian Handicap
+Event:Germany vs Ivory Coast
+Event Date:2026/06/21 04:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:50.00 MYR
+Status:Draw
+Result:2 : 1
+
+Purchase Ticket ID:856041582003191808
+Bet Ticket ID:856041582003191809
+Bet Date:2026/06/20 13:23
+Bet:Netherlands -0.5
+Odds:1.77 EU
+Bet Type:FT Asian Handicap
+Event:Netherlands vs Sweden
+Event Date:2026/06/21 01:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:88.50 MYR
+Status:Won
+Result:5 : 1
+
+Purchase Ticket ID:855964316904640512
+Bet Ticket ID:855964316904640513
+Bet Date:2026/06/20 08:16
+Bet:Brazil -2.5
+Odds:1.84 EU
+Bet Type:FT Asian Handicap
+Event:Brazil vs Haiti
+Event Date:2026/06/20 08:30
+League:World Cup 2026
+Stake:20.00 MYR
+Return:36.80 MYR
+Status:Won
+Result:3 : 0
+
+Purchase Ticket ID:855669424257212416
+Bet Ticket ID:855669424257212417
+Bet Date:2026/06/19 12:44
+Bet:Morocco -0.5
+Odds:1.75 EU
+Bet Type:FT Asian Handicap
+Event:Scotland vs Morocco
+Event Date:2026/06/20 06:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:87.50 MYR
+Status:Won
+Result:0 : 1
+
+Purchase Ticket ID:855668856130273280
+Bet Ticket ID:855668856130273281
+Bet Date:2026/06/19 12:42
+Bet:USA -0.75
+Odds:1.79 EU
+Bet Type:FT Asian Handicap
+Event:USA vs Australia
+Event Date:2026/06/20 03:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:89.50 MYR
+Status:Won
+Result:2 : 0
+
+Purchase Ticket ID:855579954858086400
+Bet Ticket ID:855579954858086401
+Bet Date:2026/06/19 06:49
+Bet:Mexico -0.25
+Odds:1.76 EU
+Bet Type:FT Asian Handicap
+Event:Mexico vs South Korea
+Event Date:2026/06/19 09:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:88.00 MYR
+Status:Won
+Result:1 : 0
+
+Purchase Ticket ID:855441241859653632
+Bet Ticket ID:855441241859653633
+Bet Date:2026/06/18 21:38
+Bet:Qatar +1.75
+Odds:1.77 EU
+Bet Type:FT Asian Handicap
+Event:Canada vs Qatar
+Event Date:2026/06/19 06:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:6 : 0
+
+Purchase Ticket ID:855423532669313024
+Bet Ticket ID:855423532669313025
+Bet Date:2026/06/18 20:27
+Bet:Switzerland -0.75
+Odds:1.73 EU
+Bet Type:FT Asian Handicap
+Event:Switzerland vs Bosnia and Herzegovina
+Event Date:2026/06/19 03:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:34.60 MYR
+Status:Won
+Result:4 : 1
+
+Purchase Ticket ID:855015925269843968
+Bet Ticket ID:855015925269843969
+Bet Date:2026/06/17 17:28
+Bet:Colombia -1.25
+Odds:1.91 EU
+Bet Type:FT Asian Handicap
+Event:Uzbekistan vs Colombia
+Event Date:2026/06/18 10:00
+League:World Cup 2026
+Stake:40.00 MYR
+Return:76.40 MYR
+Status:Won
+Result:1 : 3
+
+Purchase Ticket ID:855015134299680768
+Bet Ticket ID:855015134299680769
+Bet Date:2026/06/17 17:24
+Bet:England -0.75
+Odds:1.99 EU
+Bet Type:FT Asian Handicap
+Event:England vs Croatia
+Event Date:2026/06/18 04:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:39.80 MYR
+Status:Won
+Result:4 : 2
+
+Purchase Ticket ID:855016897505370112
+Bet Ticket ID:855016897505370113
+Bet Date:2026/06/17 17:31
+Bet:Over 2.5
+Odds:1.84 EU
+Bet Type:FT O/U
+Event:Portugal vs DR Congo
+Event Date:2026/06/18 01:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:855014350191325184
+Bet Ticket ID:855014350191325185
+Bet Date:2026/06/17 17:21
+Bet:Portugal -1.5
+Odds:1.92 EU
+Bet Type:FT Asian Handicap
+Event:Portugal vs DR Congo
+Event Date:2026/06/18 01:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:854857063162150912
+Bet Ticket ID:854857063162150913
+Bet Date:2026/06/17 06:56
+Bet:Argentina -1
+Odds:1.80 EU
+Bet Type:FT Asian Handicap
+Event:Argentina vs Algeria
+Event Date:2026/06/17 09:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:36.00 MYR
+Status:Won
+Result:3 : 0
+
+Purchase Ticket ID:854856716448399360
+Bet Ticket ID:854856716448399361
+Bet Date:2026/06/17 06:55
+Bet:Argentina -1
+Odds:1.80 EU
+Bet Type:FT Asian Handicap
+Event:Argentina vs Algeria
+Event Date:2026/06/17 09:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:36.00 MYR
+Status:Won
+Result:3 : 0
+
+Purchase Ticket ID:854719783990689792
+Bet Ticket ID:854719783990689793
+Bet Date:2026/06/16 21:51
+Bet:France -1
+Odds:1.78 EU
+Bet Type:FT Asian Handicap
+Event:France vs Senegal
+Event Date:2026/06/17 03:00
+League:World Cup 2026
+Stake:50.00 MYR
+Return:89.00 MYR
+Status:Won
+Result:3 : 1
+
+Purchase Ticket ID:854564681489313792
+Bet Ticket ID:854564681489313793
+Bet Date:2026/06/16 11:34
+Bet:France -1
+Odds:1.86 EU
+Bet Type:FT Asian Handicap
+Event:France vs Senegal
+Event Date:2026/06/17 03:00
+League:World Cup 2026
+Stake:15.00 MYR
+Return:27.90 MYR
+Status:Won
+Result:3 : 1
+
+Purchase Ticket ID:854511194302808064
+Bet Ticket ID:854511194302808065
+Bet Date:2026/06/16 08:02
+Bet:Iran -0.5
+Odds:1.85 EU
+Bet Type:FT Asian Handicap
+Event:Iran vs New Zealand
+Event Date:2026/06/16 09:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:2 : 2
+
+Purchase Ticket ID:854253445891956736
+Bet Ticket ID:854253445891956737
+Bet Date:2026/06/15 14:58
+Bet:Egypt +1
+Odds:1.83 EU
+Bet Type:FT Asian Handicap
+Event:Belgium vs Egypt
+Event Date:2026/06/16 03:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:18.30 MYR
+Status:Won
+Result:1 : 1
+
+Purchase Ticket ID:854252888947109888
+Bet Ticket ID:854252888947109889
+Bet Date:2026/06/15 14:55
+Bet:Spain -2.5
+Odds:1.80 EU
+Bet Type:FT Asian Handicap
+Event:Spain vs Cape Verde
+Event Date:2026/06/16 00:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:0 : 0
+
+Purchase Ticket ID:853945853097508864
+Bet Ticket ID:853945853097508865
+Bet Date:2026/06/14 18:35
+Bet:Netherlands -0.25
+Odds:1.81 EU
+Bet Type:FT Asian Handicap
+Event:Netherlands vs Japan
+Event Date:2026/06/15 04:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:5.00 MYR
+Status:Half-lost
+Result:2 : 2
+
+Purchase Ticket ID:853852030690336768
+Bet Ticket ID:853852030690336769
+Bet Date:2026/06/14 12:23
+Bet:Turkey -0.5
+Odds:1.92 EU
+Bet Type:[0:0]Live Betting Asian Handicap
+Event:Australia vs Turkey
+Event Date:2026/06/14 12:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:2 : 0
+
+Purchase Ticket ID:853857510758256640
+Bet Ticket ID:853857510758256641
+Bet Date:2026/06/14 12:44
+Bet:Turkey -0.5
+Odds:1.73 EU
+Bet Type:[1:0]Live Betting Asian Handicap
+Event:Australia vs Turkey
+Event Date:2026/06/14 12:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:2 : 0
+
+Purchase Ticket ID:853855110718808064
+Bet Ticket ID:853855110718808065
+Bet Date:2026/06/14 12:35
+Bet:Turkey -0.75
+Odds:1.83 EU
+Bet Type:[1:0]Live Betting Asian Handicap
+Event:Australia vs Turkey
+Event Date:2026/06/14 12:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:2 : 0
+
+Purchase Ticket ID:853586492957360128
+Bet Ticket ID:853586492957360129
+Bet Date:2026/06/13 18:47
+Bet:Brazil -0.5
+Odds:1.72 EU
+Bet Type:FT Asian Handicap
+Event:Brazil vs Morocco
+Event Date:2026/06/14 06:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:853760310254444544
+Bet Ticket ID:853760310254444545
+Bet Date:2026/06/14 06:18
+Bet:Brazil -0.25
+Odds:1.79 EU
+Bet Type:[0:0]Live Betting Asian Handicap
+Event:Brazil vs Morocco
+Event Date:2026/06/14 06:00
+League:World Cup 2026
+Stake:20.00 MYR
+Return:10.00 MYR
+Status:Half-lost
+Result:1 : 1
+
+Purchase Ticket ID:853586004014764032
+Bet Ticket ID:853586004014764033
+Bet Date:2026/06/13 18:46
+Bet:Switzerland -2
+Odds:2.10 EU
+Bet Type:FT Asian Handicap
+Event:Qatar vs Switzerland
+Event Date:2026/06/14 03:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:853273495537922048
+Bet Ticket ID:853273495537922049
+Bet Date:2026/06/12 22:04
+Bet:USA -0.25
+Odds:1.82 EU
+Bet Type:FT Asian Handicap
+Event:USA vs Paraguay
+Event Date:2026/06/13 09:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:18.20 MYR
+Status:Won
+Result:4 : 1
+
+Purchase Ticket ID:853133710286643200
+Bet Ticket ID:853133710286643201
+Bet Date:2026/06/12 12:48
+Bet:Canada -0.5
+Odds:1.86 EU
+Bet Type:FT Asian Handicap
+Event:Canada vs Bosnia and Herzegovina
+Event Date:2026/06/13 03:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:853085457524404224
+Bet Ticket ID:853085457524404225
+Bet Date:2026/06/12 09:37
+Bet:South Korea 0
+Odds:1.84 EU
+Bet Type:FT Asian Handicap
+Event:South Korea vs Czech Republic
+Event Date:2026/06/12 10:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:18.40 MYR
+Status:Won
+Result:2 : 1
+
+Purchase Ticket ID:852933013234507776
+Bet Ticket ID:852933013234507777
+Bet Date:2026/06/11 23:31
+Bet:Mexico -1
+Odds:1.74 EU
+Bet Type:FT Asian Handicap
+Event:Mexico vs South Africa
+Event Date:2026/06/12 03:00
+League:World Cup 2026
+Stake:10.00 MYR
+Return:17.40 MYR
+Status:Won
+Result:2 : 01ID:5403926348672532956/26/2026 1:59:25 PMK_zsU7ZeZDdM9e536LyKNgSoccer / HandicapFrance-0.75*WORLD CUP 2026 (IN CANADA, MEXICO & USA)FranceNorway06/27/2026 03:00 AM1.76Dec10076.00Won2ID:5403931201985577316/26/2026 2:01:18 PMK9SgKi_C_Aun3i-L7AHENgSoccer / HandicapSpain-0.75*WORLD CUP 2026 (IN CANADA, MEXICO & USA)SpainUruguay06/27/2026 08:00 AM1.70Dec9232.20Half Won

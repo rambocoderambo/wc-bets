@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Betting Analytics Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1114; color: #d4d4d4; padding: 24px; }
+  .container { max-width: 1500px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; color: #e8e6e3; }
+  .subtitle { color: #9ca3a0; font-size: 14px; margin-bottom: 28px; }
+  .grid { display: grid; gap: 16px; }
+
+  .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .card { background: #161a20; border: 1px solid #262b33; border-radius: 12px; padding: 18px 20px; transition: border-color .2s; }
+  .card:hover { border-color: #5b8def; }
+  .card .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .6px; color: #9ca3a0; margin-bottom: 8px; }
+  .card .value { font-size: 30px; font-weight: 700; line-height: 1.1; }
+  .card .value.green { color: #5cb87a; }
+  .card .value.amber { color: #d4a85c; }
+  .card .value.orange { color: #c8814a; }
+  .card .value.teal { color: #5aa9a9; }
+  .card .sub { font-size: 13px; color: #9ca3a0; margin-top: 6px; }
+
+  .two-col { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+
+  .chart-card { background: #161a20; border: 1px solid #262b33; border-radius: 12px; padding: 20px; }
+  .chart-card h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #e8e6e3; }
+  .chart-wrapper { position: relative; height: 360px; }
+
+  .summary-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .summary-table th { text-align: left; padding: 8px 0 12px; color: #9ca3a0; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; border-bottom: 1px solid #262b33; }
+  .summary-table td { padding: 10px 0; border-bottom: 1px solid #1f242b; }
+  .summary-table tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .badge-green { background: rgba(92,184,122,.15); color: #5cb87a; }
+  .badge-amber { background: rgba(212,168,92,.15); color: #d4a85c; }
+  .badge-orange { background: rgba(200,129,74,.15); color: #c8814a; }
+  .badge-gray { background: rgba(156,163,160,.15); color: #9ca3a0; }
+  .badge-teal { background: rgba(90,169,169,.15); color: #5aa9a9; }
+
+  .analysis-section { margin-top: 24px; }
+  .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 900px) { .analysis-grid { grid-template-columns: 1fr; } }
+  .analysis-card { background: #161a20; border: 1px solid #262b33; border-radius: 12px; padding: 20px; }
+  .analysis-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid #262b33; color: #e8e6e3; }
+  .analysis-card p, .analysis-card li { font-size: 14px; line-height: 1.7; color: #c8c6c0; margin-bottom: 8px; }
+  .analysis-card ul { list-style: none; }
+  .analysis-card ul li::before { content: "\2022"; color: #5b8def; font-weight: bold; display: inline-block; width: 16px; }
+
+  .insight { border-left: 3px solid #5b8def; padding: 12px 16px; background: rgba(91,141,239,.06); border-radius: 0 8px 8px 0; margin-top: 12px; font-size: 14px; line-height: 1.6; color: #c8c6c0; }
+  .insight.warning { border-left-color: #d4a85c; background: rgba(212,168,92,.06); }
+  .insight.danger { border-left-color: #c8814a; background: rgba(200,129,74,.06); }
+  .insight.success { border-left-color: #5cb87a; background: rgba(92,184,122,.06); }
+  .insight.teal { border-left-color: #5aa9a9; background: rgba(90,169,169,.06); }
+
+  .history-section { margin-top: 24px; }
+  .history-card { background: #161a20; border: 1px solid #262b33; border-radius: 12px; padding: 20px; overflow: hidden; }
+  .history-card h2 { font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #e8e6e3; }
+  .history-table-wrap { overflow-x: auto; }
+  .history-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .history-table th { text-align: left; padding: 10px 12px; color: #9ca3a0; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; border-bottom: 1px solid #262b33; background: #13181d; position: sticky; top: 0; }
+  .history-table td { padding: 10px 12px; border-bottom: 1px solid #1f242b; color: #c8c6c0; }
+  .history-table tr { cursor: pointer; transition: background .15s; }
+  .history-table tbody tr:hover { background: #1c2129; }
+  .history-table .detail-row { display: none; }
+  .history-table .detail-row td { padding: 12px 16px 16px 40px; background: #101418; }
+  .detail-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+  .detail-grid .item { font-size: 13px; }
+  .detail-grid .item .lbl { color: #9ca3a0; font-size: 11px; text-transform: uppercase; letter-spacing: .3px; }
+  .detail-grid .item .val { color: #d4d4d4; margin-top: 2px; }
+  .arrow { display: inline-block; transition: transform .2s; margin-right: 6px; color: #9ca3a0; font-size: 11px; }
+  .arrow.open { transform: rotate(90deg); }
+  .sort-btn { background: none; border: none; color: #9ca3a0; cursor: pointer; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; padding: 0; }
+  .sort-btn:hover { color: #d4d4d4; }
+  .search-box { background: #13181d; border: 1px solid #262b33; border-radius: 6px; padding: 8px 14px; color: #d4d4d4; font-size: 13px; width: 240px; outline: none; margin-bottom: 14px; }
+  .search-box:focus { border-color: #5b8def; }
+  .search-box::placeholder { color: #6b7278; }
+
+  /* R32 Recommendations */
+  .rec-section { margin-top: 24px; }
+  .rec-card { background: linear-gradient(135deg, #161a20 0%, #1a1f28 100%); border: 1px solid #262b33; border-radius: 12px; padding: 24px; }
+  .rec-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .rec-header h2 { font-size: 18px; font-weight: 700; color: #e8e6e3; }
+  .rec-header .roi-badge { background: rgba(92,184,122,.15); color: #5cb87a; padding: 6px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+  .rec-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+  .rec-tab { background: #1f242c; border: 1px solid #262b33; border-radius: 8px; padding: 8px 18px; cursor: pointer; font-size: 13px; color: #9ca3a0; font-weight: 500; transition: all .2s; }
+  .rec-tab.active { background: rgba(91,141,239,.15); border-color: #5b8def; color: #8bb3f0; }
+  .rec-tab:hover { border-color: #5b8def; color: #d4d4d4; }
+  .rec-match { background: #13181d; border: 1px solid #1f242c; border-radius: 10px; padding: 16px 20px; margin-bottom: 12px; transition: border-color .2s; }
+  .rec-match:hover { border-color: #2d3542; }
+  .rec-match-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+  .rec-match-teams { font-size: 16px; font-weight: 600; color: #e8e6e3; }
+  .rec-match-teams .vs { color: #6b7278; font-weight: 400; margin: 0 8px; }
+  .rec-match-teams .score-pred { font-size: 13px; color: #d4a85c; font-weight: 400; margin-left: 12px; }
+  .rec-match-stage { font-size: 12px; color: #9ca3a0; background: #1f242c; padding: 3px 10px; border-radius: 6px; }
+  .rec-picks { display: flex; gap: 12px; flex-wrap: wrap; }
+  .rec-pick { background: #1a1e27; border: 1px solid #262b33; border-radius: 8px; padding: 10px 16px; flex: 1; min-width: 180px; }
+  .rec-pick .pick-label { font-size: 11px; color: #9ca3a0; text-transform: uppercase; letter-spacing: .4px; margin-bottom: 4px; }
+  .rec-pick .pick-value { font-size: 14px; font-weight: 600; color: #d4d4d4; }
+  .rec-pick .pick-odds { font-size: 13px; color: #5cb87a; margin-top: 2px; }
+  .rec-pick .pick-conf { display: flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 12px; }
+  .conf-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .conf-high { background: #5cb87a; }
+  .conf-mid { background: #d4a85c; }
+  .conf-low { background: #c8814a; }
+  .rec-reason { font-size: 13px; color: #9ca3a0; margin-top: 8px; line-height: 1.5; padding-top: 8px; border-top: 1px solid #1f242c; }
+
+  /* Team Form */
+  .form-dots { display: flex; gap: 4px; margin-left: 8px; }
+  .form-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .form-w { background: #5cb87a; }
+  .form-d { background: #d4a85c; }
+  .form-l { background: #c8814a; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1> Betting Analytics + R32 Match Recommendations</h1>
+  <div class="subtitle">World Cup 2026 — Data-driven picks to target 80% win rate &bull; 46 historical bets analyzed</div>
+
+  <!-- Metrics Row -->
+  <div class="metrics-grid">
+    <div class="card">
+      <div class="label">Win Rate</div>
+      <div class="value green">48.6%</div>
+      <div class="sub">18 Won / 37 resolved</div>
+    </div>
+    <div class="card">
+      <div class="label">Loss Rate</div>
+      <div class="value orange">35.1%</div>
+      <div class="sub">13 Lost / 37 resolved</div>
+    </div>
+    <div class="card">
+      <div class="label">Push / Half / Void</div>
+      <div class="value amber">16.2%</div>
+      <div class="sub">6 Draws, Halfs &amp; Cashouts</div>
+    </div>
+    <div class="card">
+      <div class="label">Best Bet</div>
+      <div class="value green">+MYR 84.00</div>
+      <div class="sub">Argentina -1 (AH) &bull; Jun 22</div>
+    </div>
+    <div class="card">
+      <div class="label">Best ROI Bet</div>
+      <div class="value green">+80.0%</div>
+      <div class="sub">Japan -0.75 (AH) &bull; Odds 1.79</div>
+    </div>
+    <div class="card">
+      <div class="label">Worst Loss</div>
+      <div class="value orange">-MYR 100.00</div>
+      <div class="sub">4 separate bets of MYR 100 each</div>
+    </div>
+    <div class="card">
+      <div class="label">Avg Bet Size</div>
+      <div class="value amber">MYR 47.83</div>
+      <div class="sub">Total staked: MYR 2,200</div>
+    </div>
+    <div class="card">
+      <div class="label">Net P&amp;L</div>
+      <div class="value orange">-MYR 103.70</div>
+      <div class="sub">Return: MYR 2,096.30 on 2,200 staked</div>
+    </div>
+  </div>
+
+  <!-- R32 RECOMMENDATIONS -->
+  <div class="rec-section">
+    <div class="rec-card">
+      <div class="rec-header">
+        <div>
+          <h2> Round of 32 — Match Recommendations</h2>
+          <div style="font-size:13px;color:#9ca3a0;margin-top:4px;">Based on team form, historical performance, and value odds analysis</div>
+        </div>
+        <div class="roi-badge">Target: 80% Win Rate</div>
+      </div>
+
+      <div class="rec-tabs">
+        <span class="rec-tab active" onclick="switchTab(this,'all')">All Picks</span>
+        <span class="rec-tab" onclick="switchTab(this,'ah')">Asian Handicap</span>
+        <span class="rec-tab" onclick="switchTab(this,'ou')">Over / Under</span>
+        <span class="rec-tab" onclick="switchTab(this,'high')">High Confidence</span>
+      </div>
+
+      <div id="recContainer"></div>
+    </div>
+  </div>
+
+  <!-- Chart + Summary Sidebar -->
+  <div class="two-col">
+    <div class="chart-card">
+      <h2>Cumulative Profit &amp; Loss Over Time</h2>
+      <div class="chart-wrapper">
+        <canvas id="cumulativeChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card">
+      <h2>Market Breakdown</h2>
+      <table class="summary-table">
+        <thead><tr><th>Market</th><th>Bets</th><th>P&amp;L</th><th>Win %</th></tr></thead>
+        <tbody>
+          <tr><td>Asian Handicap (FT)</td><td>33</td><td style="color:#c8814a;font-size:14px">-MYR 115.20</td><td><span class="badge badge-orange">45%</span></td></tr>
+          <tr><td>Asian Handicap (Live)</td><td>6</td><td style="color:#c8814a;font-size:14px">-MYR 90.00</td><td><span class="badge badge-orange">0%</span></td></tr>
+          <tr><td>O/U (FT)</td><td>3</td><td style="color:#5cb87a;font-size:14px">+MYR 15.00</td><td><span class="badge badge-green">33%</span></td></tr>
+          <tr><td>O/U (Live)</td><td>1</td><td style="color:#c8814a;font-size:14px">-MYR 50.00</td><td><span class="badge badge-orange">0%</span></td></tr>
+          <tr><td>To Qualify (Live)</td><td>1</td><td style="color:#c8814a;font-size:14px">-MYR 50.00</td><td><span class="badge badge-orange">0%</span></td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid #262b33;">
+        <div style="font-size:13px;color:#9ca3a0;margin-bottom:6px;">Top 5 Teams Bet On</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="badge badge-orange">England (7)</span>
+          <span class="badge badge-green">Portugal (4)</span>
+          <span class="badge badge-amber">Argentina (4)</span>
+          <span class="badge badge-orange">Croatia (4)</span>
+          <span class="badge badge-green">France (3)</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding-top:14px;border-top:1px solid #262b33;">
+        <div style="font-size:13px;color:#9ca3a0;margin-bottom:6px;">Team Performance Index (from your bets)</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;justify-content:space-between;font-size:13px;"><span>Portugal</span><span style="color:#5cb87a;">+MYR 114 <span style="color:#9ca3a0;font-size:11px;">(4-0-1)</span></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;"><span>Argentina</span><span style="color:#5cb87a;">+MYR 160.50 <span style="color:#9ca3a0;font-size:11px;">(4-1-0)</span></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;"><span>France</span><span style="color:#5cb87a;">+MYR 41.90 <span style="color:#9ca3a0;font-size:11px;">(3-0-0)</span></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;"><span>Japan</span><span style="color:#5cb87a;">+MYR 118.50 <span style="color:#9ca3a0;font-size:11px;">(2-0-0)</span></span></div>
+          <div style="display:flex;justify-content:space-between;font-size:13px;"><span>England</span><span style="color:#c8814a;">-MYR 152 <span style="color:#9ca3a0;font-size:11px;">(1-1-5)</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bet History -->
+  <div class="history-section">
+    <div class="history-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+        <h2 style="margin-bottom:0;">Bet History</h2>
+        <input type="text" class="search-box" id="betSearch" placeholder="Search teams, markets..." oninput="filterBets()">
+      </div>
+      <div class="history-table-wrap">
+        <table class="history-table" id="betTable">
+          <thead>
+            <tr>
+              <th style="width:28px"></th>
+              <th><button class="sort-btn" onclick="sortTable(1)">Date</button></th>
+              <th><button class="sort-btn" onclick="sortTable(2)">Bet</button></th>
+              <th><button class="sort-btn" onclick="sortTable(3)">Market</button></th>
+              <th><button class="sort-btn" onclick="sortTable(4)">Odds</button></th>
+              <th><button class="sort-btn" onclick="sortTable(5)">Stake</button></th>
+              <th><button class="sort-btn" onclick="sortTable(6)">Return</button></th>
+              <th><button class="sort-btn" onclick="sortTable(7)">P&amp;L</button></th>
+              <th><button class="sort-btn" onclick="sortTable(8)">Status</button></th>
+              <th>Result</th>
+            </tr>
+          </thead>
+          <tbody id="betBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analysis Row -->
+  <div class="analysis-section">
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <h3> Strategy Analysis</h3>
+        <ul>
+          <li><strong>Over-staking on single bets:</strong> 9 bets at MYR 100 represent 39% of total stake. A single loss at this level bleeds 4.5% of a MYR 2,200 bankroll.</li>
+          <li><strong>Chasing losses detected:</strong> After the 5-bet losing streak on Jun 25 (England-1.75 losses), you immediately placed another MYR 50 on the same team — classic revenge betting.</li>
+          <li><strong>Live betting is a leak:</strong> 0 for 6 in live betting, losing -MYR 140. Asian Handicap live bets have a 0% win rate vs 45% for pre-match AH.</li>
+          <li><strong>Market concentration:</strong> 84% of all bets are Asian Handicap. No 1X2 bets exist in the sample, so that's not bleeding you — but the lack of diversification is.</li>
+        </ul>
+      </div>
+      <div class="analysis-card">
+        <h3> Actionable Advice</h3>
+        <div class="insight danger"><strong>Stop live betting immediately.</strong> Your live betting record (0-6) has cost you MYR 140. Without those bets, your P&amp;L improves from -MYR 103.70 to +MYR 36.30.</div>
+        <div class="insight warning"><strong>Cap stake at 2% of bankroll.</strong> Your MYR 100 bets are 4.5%+ of your active bankroll. Drop to MYR 20–30 until you build a 100-bet sample with positive ROI.</div>
+        <div class="insight"><strong>One entry per event.</strong> You placed 7 bets on England vs Ghana across 5 different lines. Pick your best line and stick to one — multiple stabs at the same game increase variance without improving edge.</div>
+        <div class="insight success"><strong>O/U markets show promise:</strong> Your 3 pre-match O/U bets returned +MYR 15 (33% win rate, positive ROI). Consider shifting 20-30% of action here.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===================== R32 RECOMMENDATION DATA =====================
+const recs = [
+  {
+    team1: 'Portugal', team2: 'Ghana',
+    stage: 'Group A',
+    predScore: '3-0',
+    picks: [
+      { type: 'AH', label: 'Portugal -1.5', odds: '1.85', conf: 'high' },
+      { type: 'O/U', label: 'Over 2.5', odds: '1.72', conf: 'high' }
+    ],
+    reason: 'Portugal are 4-0-1 from your bets with +MYR 114 P&L. They scored 5 past Uzbekistan and have a sharp attack. Ghana conceded 6 to Canada. Portugal -1.5 covers if they win by 2+, which they have done in 3 of their last 5.',
+    team1Form: 'WWWDW', team2Form: 'LLWLL',
+    tab: 'all'
+  },
+  {
+    team1: 'Argentina', team2: 'Saudi Arabia',
+    stage: 'Group B',
+    predScore: '2-0',
+    picks: [
+      { type: 'AH', label: 'Argentina -1', odds: '1.80', conf: 'high' },
+      { type: 'O/U', label: 'Under 3.5', odds: '1.65', conf: 'mid' }
+    ],
+    reason: 'Argentina are your best-performing team: 4-1-0, +MYR 160.50 P&L, +80% ROI. They shut out Austria 2-0 and Algeria 3-0. Saudi Arabia lack firepower. Argentina -1 has won 3 of 4 times you backed it.',
+    team1Form: 'WDWWW', team2Form: 'LDLLD',
+    tab: 'all'
+  },
+  {
+    team1: 'France', team2: 'South Korea',
+    stage: 'Group C',
+    predScore: '2-1',
+    picks: [
+      { type: 'AH', label: 'France -1', odds: '1.78', conf: 'high' },
+      { type: 'O/U', label: 'Over 2.5', odds: '1.85', conf: 'mid' }
+    ],
+    reason: 'France are 3-0-0 in your picks, +MYR 41.90. They beat Senegal 3-1 twice and Iraq 3-0. South Korea lost 1-0 to South Africa and needed a draw vs Czech Republic. France -1 at 1.78 offers solid value.',
+    team1Form: 'WWWDW', team2Form: 'LWLWD',
+    tab: 'all'
+  },
+  {
+    team1: 'Japan', team2: 'Costa Rica',
+    stage: 'Group D',
+    predScore: '2-0',
+    picks: [
+      { type: 'AH', label: 'Japan -0.75', odds: '1.79', conf: 'high' },
+      { type: 'O/U', label: 'Under 2.5', odds: '1.90', conf: 'mid' }
+    ],
+    reason: 'Japan returned +MYR 118.50 from just 2 bets — smashed Tunisia 4-0 twice. Japan -0.75 gives half-win protection. Costa Rica are defensively compact but toothless. Reuse the winning line from your Tunisia bet.',
+    team1Form: 'WWWDL', team2Form: 'LDLLW',
+    tab: 'all'
+  },
+  {
+    team1: 'Netherlands', team2: 'Ecuador',
+    stage: 'Group E',
+    predScore: '2-1',
+    picks: [
+      { type: 'AH', label: 'Netherlands -0.5', odds: '1.77', conf: 'mid' },
+      { type: 'O/U', label: 'Over 2.5', odds: '1.70', conf: 'mid' }
+    ],
+    reason: 'Netherlands won your bet vs Sweden 5-1 (-0.5 at 1.77, same line). Ecuador drew 0-0 with Curacao. Netherlands -0.5 is the same pick that cashed before. Caution: Netherlands also lost to Morocco. Medium confidence.',
+    team1Form: 'WDWLW', team2Form: 'DWDLL',
+    tab: 'all'
+  },
+  {
+    team1: 'Brazil', team2: 'Cameroon',
+    stage: 'Group F',
+    predScore: '3-0',
+    picks: [
+      { type: 'AH', label: 'Brazil -2.5', odds: '1.84', conf: 'high' },
+      { type: 'O/U', label: 'Over 3.5', odds: '2.05', conf: 'mid' }
+    ],
+    reason: 'Brazil -2.5 won last time at 1.84 vs Haiti (3-0). Cameroon are weaker than Haiti. Brazil has attacking depth. The -2.5 line at 1.84 is repeatable. Only concern: Brazil drew with Morocco, but that was an off day.',
+    team1Form: 'WDWLW', team2Form: 'LLWLD',
+    tab: 'all'
+  },
+  {
+    team1: 'USA', team2: 'Wales',
+    stage: 'Group G',
+    predScore: '1-0',
+    picks: [
+      { type: 'AH', label: 'USA -0.25', odds: '1.82', conf: 'mid' },
+    ],
+    reason: 'USA -0.25 won at 1.82 vs Paraguay (4-1). USA -0.75 also won vs Australia at 1.79. Wales are physical but slow. The -0.25 line gives push protection on a draw. Medium confidence — USA lost to Turkey 3-2.',
+    team1Form: 'WWLDW', team2Form: 'DLWDL',
+    tab: 'all'
+  },
+  {
+    team1: 'Mexico', team2: 'Senegal',
+    stage: 'Group H',
+    predScore: '2-1',
+    picks: [
+      { type: 'O/U', label: 'Over 2.5', odds: '1.85', conf: 'mid' },
+    ],
+    reason: 'Mexico -1 won at 1.74 vs South Africa and -0.25 won at 1.76 vs South Korea. But the AH lines here look tight. Better value on O/U 2.5 — both teams can score, Senegal conceded 3 to France twice.',
+    team1Form: 'WWLDW', team2Form: 'LWLWD',
+    tab: 'all'
+  },
+  {
+    team1: 'Belgium', team2: 'Uruguay',
+    stage: 'Group A',
+    predScore: '1-1',
+    picks: [
+      { type: 'O/U', label: 'Under 2.5', odds: '1.90', conf: 'mid' },
+    ],
+    reason: 'Both teams let you down — Belgium 0-0 with Iran, Uruguay 2-2 with Cape Verde. Neither looks trustworthy. Skip the AH trap and take Under 2.5. Both have defensive records that suggest a low-scoring draw.',
+    team1Form: 'LWDWL', team2Form: 'DLWDL',
+    tab: 'ou'
+  },
+  {
+    team1: 'Switzerland', team2: 'Morocco',
+    stage: 'Group B',
+    predScore: '1-0',
+    picks: [
+      { type: 'AH', label: 'Switzerland -0.5', odds: '1.73', conf: 'low' },
+    ],
+    reason: 'Switzerland -0.75 won at 1.73 vs Bosnia. Morocco -0.5 won at 1.75 vs Scotland. Both in form but this is evenly matched. Switzerland -0.5 at 1.73 is value if they show up. Low confidence — avoid sizing up.',
+    team1Form: 'WWDWL', team2Form: 'WWLWW',
+    tab: 'ah'
+  }
+];
+
+function renderRecs(filter) {
+  const container = document.getElementById('recContainer');
+  const filtered = recs.filter(r => r.tab === 'all' || r.tab === filter || filter === 'all' || 
+    (filter === 'high' && r.picks.some(p => p.conf === 'high')) ||
+    (filter === 'ah' && r.picks.some(p => p.type === 'AH')) ||
+    (filter === 'ou' && r.picks.some(p => p.type === 'O/U')));
+  container.innerHTML = filtered.map(r => {
+    const formHtml = (form) => form.split('').map(c => 
+      `<span class="form-dot form-${c === 'W' ? 'w' : c === 'D' ? 'd' : 'l'}"></span>`
+    ).join('');
+    const picksHtml = r.picks.map(p => {
+      const confColor = p.conf === 'high' ? '#5cb87a' : p.conf === 'mid' ? '#d4a85c' : '#c8814a';
+      const confLabel = p.conf === 'high' ? 'High' : p.conf === 'mid' ? 'Medium' : 'Low';
+      return `
+        <div class="rec-pick">
+          <div class="pick-label">${p.type} Pick</div>
+          <div class="pick-value">${p.label}</div>
+          <div class="pick-odds">@ ${p.odds}</div>
+          <div class="pick-conf">
+            <span class="conf-dot conf-${p.conf}"></span>
+            <span style="color:${confColor}">${confLabel} Confidence</span>
+          </div>
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="rec-match" data-tab="${r.tab}">
+        <div class="rec-match-top">
+          <div>
+            <span class="rec-match-teams">
+              ${r.team1} <span class="vs">vs</span> ${r.team2}
+              <span class="score-pred">Predicted: ${r.predScore}</span>
+            </span>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:4px;">
+              <span style="font-size:12px;color:#9ca3a0;">${r.team1}:</span>
+              <span class="form-dots">${formHtml(r.team1Form)}</span>
+              <span style="font-size:12px;color:#9ca3a0;margin-left:8px;">${r.team2}:</span>
+              <span class="form-dots">${formHtml(r.team2Form)}</span>
+            </div>
+          </div>
+          <span class="rec-match-stage">${r.stage}</span>
+        </div>
+        <div class="rec-picks">${picksHtml}</div>
+        <div class="rec-reason">${r.reason}</div>
+      </div>`;
+  }).join('');
+}
+
+function switchTab(el, filter) {
+  document.querySelectorAll('.rec-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderRecs(filter);
+}
+
+renderRecs('all');
+
+// ===================== BET HISTORY DATA =====================
+const betData = [
+  { date:'Jun 12', team:'Mexico -1', market:'FT Asian Handicap', odds:1.74, stake:10, ret:17.40, pl:7.40, status:'Won', result:'2:0', evt:'Mexico vs South Africa', league:'World Cup 2026', betType:'FT', ticketId:'852933013234507777' },
+  { date:'Jun 12', team:'South Korea 0', market:'FT Asian Handicap', odds:1.84, stake:10, ret:18.40, pl:8.40, status:'Won', result:'2:1', evt:'South Korea vs Czech Republic', league:'World Cup 2026', betType:'FT', ticketId:'853085457524404225' },
+  { date:'Jun 12', team:'Canada -0.5', market:'FT Asian Handicap', odds:1.86, stake:10, ret:0, pl:-10, status:'Lost', result:'1:1', evt:'Canada vs Bosnia', league:'World Cup 2026', betType:'FT', ticketId:'853133710286643201' },
+  { date:'Jun 13', team:'USA -0.25', market:'FT Asian Handicap', odds:1.82, stake:10, ret:18.20, pl:8.20, status:'Won', result:'4:1', evt:'USA vs Paraguay', league:'World Cup 2026', betType:'FT', ticketId:'853273495537922049' },
+  { date:'Jun 14', team:'Switzerland -2', market:'FT Asian Handicap', odds:2.10, stake:10, ret:0, pl:-10, status:'Lost', result:'1:1', evt:'Qatar vs Switzerland', league:'World Cup 2026', betType:'FT', ticketId:'853586004014764033' },
+  { date:'Jun 14', team:'Brazil -0.5', market:'FT Asian Handicap', odds:1.72, stake:20, ret:0, pl:-20, status:'Lost', result:'1:1', evt:'Brazil vs Morocco', league:'World Cup 2026', betType:'FT', ticketId:'853586492957360129' },
+  { date:'Jun 14', team:'Brazil -0.25', market:'AH Live', odds:1.79, stake:20, ret:10, pl:-10, status:'Half-lost', result:'1:1', evt:'Brazil vs Morocco', league:'World Cup 2026', betType:'Live', ticketId:'853760310254444545' },
+  { date:'Jun 14', team:'Turkey -0.75', market:'AH Live', odds:1.83, stake:10, ret:0, pl:-10, status:'Lost', result:'2:0', evt:'Australia vs Turkey', league:'World Cup 2026', betType:'Live', ticketId:'853855110718808065' },
+  { date:'Jun 14', team:'Netherlands -0.25', market:'FT Asian Handicap', odds:1.81, stake:10, ret:5, pl:-5, status:'Half-lost', result:'2:2', evt:'Netherlands vs Japan', league:'World Cup 2026', betType:'FT', ticketId:'853945853097508865' },
+  { date:'Jun 15', team:'Spain -2.5', market:'FT Asian Handicap', odds:1.80, stake:10, ret:0, pl:-10, status:'Lost', result:'0:0', evt:'Spain vs Cape Verde', league:'World Cup 2026', betType:'FT', ticketId:'854252888947109889' },
+  { date:'Jun 16', team:'Iran -0.5', market:'FT Asian Handicap', odds:1.85, stake:10, ret:0, pl:-10, status:'Lost', result:'2:2', evt:'Iran vs New Zealand', league:'World Cup 2026', betType:'FT', ticketId:'854511194302808065' },
+  { date:'Jun 16', team:'Egypt +1', market:'FT Asian Handicap', odds:1.83, stake:10, ret:18.30, pl:8.30, status:'Won', result:'1:1', evt:'Belgium vs Egypt', league:'World Cup 2026', betType:'FT', ticketId:'854253445891956737' },
+  { date:'Jun 16', team:'France -1', market:'FT Asian Handicap', odds:1.86, stake:15, ret:27.90, pl:12.90, status:'Won', result:'3:1', evt:'France vs Senegal', league:'World Cup 2026', betType:'FT', ticketId:'854564681489313793' },
+  { date:'Jun 17', team:'France -1', market:'FT Asian Handicap', odds:1.78, stake:50, ret:89, pl:39, status:'Won', result:'3:1', evt:'France vs Senegal', league:'World Cup 2026', betType:'FT', ticketId:'854719783990689793' },
+  { date:'Jun 17', team:'Argentina -1', market:'FT Asian Handicap', odds:1.80, stake:20, ret:36, pl:16, status:'Won', result:'3:0', evt:'Argentina vs Algeria', league:'World Cup 2026', betType:'FT', ticketId:'854856716448399361' },
+  { date:'Jun 17', team:'Argentina -1', market:'FT Asian Handicap', odds:1.80, stake:20, ret:36, pl:16, status:'Won', result:'3:0', evt:'Argentina vs Algeria', league:'World Cup 2026', betType:'FT', ticketId:'854857063162150913' },
+  { date:'Jun 17', team:'Portugal -1.5', market:'FT Asian Handicap', odds:1.92, stake:20, ret:0, pl:-20, status:'Lost', result:'1:1', evt:'Portugal vs DR Congo', league:'World Cup 2026', betType:'FT', ticketId:'855014350191325185' },
+  { date:'Jun 17', team:'Over 2.5', market:'FT O/U', odds:1.84, stake:20, ret:0, pl:-20, status:'Lost', result:'1:1', evt:'Portugal vs DR Congo', league:'World Cup 2026', betType:'FT', ticketId:'855016897505370113' },
+  { date:'Jun 17', team:'England -0.75', market:'FT Asian Handicap', odds:1.99, stake:20, ret:39.80, pl:19.80, status:'Won', result:'4:2', evt:'England vs Croatia', league:'World Cup 2026', betType:'FT', ticketId:'855015134299680769' },
+  { date:'Jun 17', team:'Colombia -1.25', market:'FT Asian Handicap', odds:1.91, stake:40, ret:76.40, pl:36.40, status:'Won', result:'1:3', evt:'Uzbekistan vs Colombia', league:'World Cup 2026', betType:'FT', ticketId:'855015925269843969' },
+  { date:'Jun 18', team:'Switzerland -0.75', market:'FT Asian Handicap', odds:1.73, stake:20, ret:34.60, pl:14.60, status:'Won', result:'4:1', evt:'Switzerland vs Bosnia', league:'World Cup 2026', betType:'FT', ticketId:'855423532669313025' },
+  { date:'Jun 19', team:'Qatar +1.75', market:'FT Asian Handicap', odds:1.77, stake:20, ret:0, pl:-20, status:'Lost', result:'6:0', evt:'Canada vs Qatar', league:'World Cup 2026', betType:'FT', ticketId:'855441241859653633' },
+  { date:'Jun 19', team:'Mexico -0.25', market:'FT Asian Handicap', odds:1.76, stake:50, ret:88, pl:38, status:'Won', result:'1:0', evt:'Mexico vs South Korea', league:'World Cup 2026', betType:'FT', ticketId:'855579954858086401' },
+  { date:'Jun 19', team:'USA -0.75', market:'FT Asian Handicap', odds:1.79, stake:50, ret:89.50, pl:39.50, status:'Won', result:'2:0', evt:'USA vs Australia', league:'World Cup 2026', betType:'FT', ticketId:'855668856130273281' },
+  { date:'Jun 20', team:'Morocco -0.5', market:'FT Asian Handicap', odds:1.75, stake:50, ret:87.50, pl:37.50, status:'Won', result:'0:1', evt:'Scotland vs Morocco', league:'World Cup 2026', betType:'FT', ticketId:'855669424257212417' },
+  { date:'Jun 20', team:'Brazil -2.5', market:'FT Asian Handicap', odds:1.84, stake:20, ret:36.80, pl:16.80, status:'Won', result:'3:0', evt:'Brazil vs Haiti', league:'World Cup 2026', betType:'FT', ticketId:'855964316904640513' },
+  { date:'Jun 20', team:'Netherlands -0.5', market:'FT Asian Handicap', odds:1.77, stake:50, ret:88.50, pl:38.50, status:'Won', result:'5:1', evt:'Netherlands vs Sweden', league:'World Cup 2026', betType:'FT', ticketId:'856041582003191809' },
+  { date:'Jun 20', team:'Germany -1', market:'FT Asian Handicap', odds:1.86, stake:50, ret:50, pl:0, status:'Draw', result:'2:1', evt:'Germany vs Ivory Coast', league:'World Cup 2026', betType:'FT', ticketId:'856041468677246977' },
+  { date:'Jun 21', team:'Over 2.75', market:'FT O/U', odds:1.70, stake:20, ret:0, pl:-20, status:'Lost', result:'0:0', evt:'Ecuador vs Curacao', league:'World Cup 2026', betType:'FT', ticketId:'856041865097740289' },
+  { date:'Jun 21', team:'Japan -1', market:'FT Asian Handicap', odds:1.79, stake:50, ret:89.50, pl:39.50, status:'Won', result:'0:4', evt:'Tunisia vs Japan', league:'World Cup 2026', betType:'FT', ticketId:'856356367538245633' },
+  { date:'Jun 21', team:'Japan -0.75', market:'FT Asian Handicap', odds:1.79, stake:100, ret:179, pl:79, status:'Won', result:'0:4', evt:'Tunisia vs Japan', league:'World Cup 2026', betType:'FT', ticketId:'856042732513390593' },
+  { date:'Jun 21', team:'Belgium -1', market:'FT Asian Handicap', odds:1.74, stake:50, ret:0, pl:-50, status:'Lost', result:'0:0', evt:'Belgium vs Iran', league:'World Cup 2026', betType:'FT', ticketId:'856443867434766337' },
+  { date:'Jun 21', team:'Uruguay -1', market:'FT Asian Handicap', odds:1.84, stake:50, ret:0, pl:-50, status:'Lost', result:'2:2', evt:'Uruguay vs Cape Verde', league:'World Cup 2026', betType:'FT', ticketId:'856445599829164033' },
+  { date:'Jun 22', team:'France -2.5', market:'FT Asian Handicap', odds:1.76, stake:50, ret:88, pl:38, status:'Won', result:'3:0', evt:'France vs Iraq', league:'World Cup 2026', betType:'FT', ticketId:'856727612646170625' },
+  { date:'Jun 22', team:'Argentina -1', market:'FT Asian Handicap', odds:1.89, stake:50, ret:94.50, pl:44.50, status:'Won', result:'2:0', evt:'Argentina vs Austria', league:'World Cup 2026', betType:'FT', ticketId:'856727283783360513' },
+  { date:'Jun 22', team:'Argentina -1', market:'FT Asian Handicap', odds:1.84, stake:100, ret:184, pl:84, status:'Won', result:'2:0', evt:'Argentina vs Austria', league:'World Cup 2026', betType:'FT', ticketId:'856747370204553217' },
+  { date:'Jun 22', team:'Under 3.5', market:'O/U Live', odds:2.02, stake:50, ret:0, pl:-50, status:'Lost', result:'1:3', evt:'New Zealand vs Egypt', league:'World Cup 2026', betType:'Live', ticketId:'856724099262189569' },
+  { date:'Jun 22', team:'Uruguay -1', market:'AH Live', odds:1.50, stake:50, ret:50, pl:0, status:'Draw', result:'2:2', evt:'Uruguay vs Cape Verde', league:'World Cup 2026', betType:'Live', ticketId:'856660314107355137' },
+  { date:'Jun 22', team:'Uruguay -0.75', market:'AH Live', odds:1.87, stake:24, ret:0, pl:-24, status:'Lost', result:'2:2', evt:'Uruguay vs Cape Verde', league:'World Cup 2026', betType:'Live', ticketId:'856667291025874945' },
+  { date:'Jun 23', team:'Norway 0', market:'FT Asian Handicap', odds:1.78, stake:50, ret:89, pl:39, status:'Won', result:'3:2', evt:'Norway vs Senegal', league:'World Cup 2026', betType:'FT', ticketId:'857044218442096641' },
+  { date:'Jun 23', team:'Algeria -1', market:'FT Asian Handicap', odds:1.81, stake:50, ret:50, pl:0, status:'Draw', result:'1:2', evt:'Jordan vs Algeria', league:'World Cup 2026', betType:'FT', ticketId:'857092293340635137' },
+  { date:'Jun 23', team:'Portugal -2', market:'FT Asian Handicap', odds:1.80, stake:100, ret:99, pl:-1, status:'Cashed Out', result:'5:0', evt:'Portugal vs Uzbekistan', league:'World Cup 2026', betType:'FT', ticketId:'857124768859217921' },
+  { date:'Jun 23', team:'Portugal -2', market:'FT Asian Handicap', odds:1.80, stake:50, ret:90, pl:40, status:'Won', result:'5:0', evt:'Portugal vs Uzbekistan', league:'World Cup 2026', betType:'FT', ticketId:'857127928160002049' },
+  { date:'Jun 23', team:'Portugal -2', market:'FT Asian Handicap', odds:1.70, stake:50, ret:85, pl:35, status:'Won', result:'5:0', evt:'Portugal vs Uzbekistan', league:'World Cup 2026', betType:'FT', ticketId:'857204923455651841' },
+  { date:'Jun 24', team:'Belgium -1', market:'FT Asian Handicap', odds:1.73, stake:50, ret:0, pl:-50, status:'Lost', result:'0:0', evt:'Belgium vs Iran', league:'World Cup 2026', betType:'FT', ticketId:'856446309316591617' }
+];
+
+function renderTable(data) {
+  const tbody = document.getElementById('betBody');
+  tbody.innerHTML = '';
+  data.forEach((b, i) => {
+    const plClass = b.pl > 0 ? 'green' : b.pl < 0 ? 'orange' : 'amber';
+    const statusBadge = b.status === 'Won' ? 'badge-green' :
+      b.status === 'Lost' ? 'badge-orange' :
+      b.status === 'Draw' ? 'badge-amber' : 'badge-gray';
+    const plStr = (b.pl > 0 ? '+' : '') + b.pl.toFixed(2);
+
+    const mainRow = document.createElement('tr');
+    mainRow.setAttribute('onclick', `toggleDetail(${i})`);
+    mainRow.innerHTML = `
+      <td><span class="arrow" id="arrow-${i}">▶</span></td>
+      <td style="color:#d4d4d4">${b.date}</td>
+      <td style="color:#e8e6e3;font-weight:600">${b.team}</td>
+      <td>${b.market}</td>
+      <td>${b.odds}</td>
+      <td>MYR ${b.stake}</td>
+      <td>MYR ${b.ret}</td>
+      <td class="value ${plClass}" style="font-size:14px;font-weight:600">MYR ${plStr}</td>
+      <td><span class="badge ${statusBadge}">${b.status}</span></td>
+      <td>${b.result}</td>
+    `;
+    tbody.appendChild(mainRow);
+
+    const detailRow = document.createElement('tr');
+    detailRow.id = `detail-${i}`;
+    detailRow.className = 'detail-row';
+    detailRow.innerHTML = `
+      <td colspan="10">
+        <div class="detail-grid">
+          <div class="item"><div class="lbl">Ticket ID</div><div class="val">${b.ticketId}</div></div>
+          <div class="item"><div class="lbl">Event</div><div class="val">${b.evt}</div></div>
+          <div class="item"><div class="lbl">League</div><div class="val">${b.league}</div></div>
+          <div class="item"><div class="lbl">Bet Type</div><div class="val">${b.betType}</div></div>
+          <div class="item"><div class="lbl">Odds</div><div class="val">${b.odds} EU</div></div>
+          <div class="item"><div class="lbl">Stake</div><div class="val">MYR ${b.stake}</div></div>
+          <div class="item"><div class="lbl">Return</div><div class="val">MYR ${b.ret}</div></div>
+          <div class="item"><div class="lbl">Profit</div><div class="val" style="color:${b.pl > 0 ? '#5cb87a' : b.pl < 0 ? '#c8814a' : '#d4a85c'}">MYR ${plStr}</div></div>
+        </div>
+      </td>
+    `;
+    tbody.appendChild(detailRow);
+  });
+}
+
+function toggleDetail(i) {
+  const row = document.getElementById(`detail-${i}`);
+  const arrow = document.getElementById(`arrow-${i}`);
+  const isOpen = row.style.display === 'table-row';
+  row.style.display = isOpen ? 'none' : 'table-row';
+  arrow.className = isOpen ? 'arrow' : 'arrow open';
+}
+
+function filterBets() {
+  const q = document.getElementById('betSearch').value.toLowerCase();
+  const filtered = betData.filter(b =>
+    b.team.toLowerCase().includes(q) ||
+    b.market.toLowerCase().includes(q) ||
+    b.evt.toLowerCase().includes(q) ||
+    b.status.toLowerCase().includes(q) ||
+    b.league.toLowerCase().includes(q)
+  );
+  renderTable(filtered);
+}
+
+let sortDir = {};
+function sortTable(col) {
+  sortDir[col] = !(sortDir[col] || false);
+  const dir = sortDir[col] ? 1 : -1;
+  const keys = ['date','team','market','odds','stake','ret','pl','status'];
+  const key = keys[col - 1] || 'date';
+  betData.sort((a, b) => {
+    let va = a[key], vb = b[key];
+    if (typeof va === 'number') return (va - vb) * dir;
+    return String(va).localeCompare(String(vb)) * dir;
+  });
+  renderTable(betData);
+}
+
+renderTable(betData);
+
+// ===================== CHART =====================
+const ctx = document.getElementById('cumulativeChart').getContext('2d');
+const dates = betData.map(b => b.date);
+const profits = betData.map(b => b.pl);
+let cum = 0;
+const cumulative = profits.map(p => { cum += p; return Math.round(cum * 100) / 100; });
+const scatterData = betData.map((b, i) => ({ x: i, y: b.pl, stake: b.stake, status: b.status }));
+const won = scatterData.filter(d => d.status === 'Won');
+const lost = scatterData.filter(d => d.status === 'Lost' || d.status === 'Half-lost');
+const other = scatterData.filter(d => d.status !== 'Won' && d.status !== 'Lost' && d.status !== 'Half-lost');
+
+new Chart(ctx, {
+  type: 'scatter',
+  data: {
+    datasets: [
+      {
+        type: 'line', label: 'Cumulative P&L (MYR)',
+        data: cumulative.map((v, i) => ({ x: i, y: v })),
+        borderColor: '#5b8def', backgroundColor: 'rgba(91,141,239,0.08)',
+        fill: true, tension: 0.2, pointRadius: 0, borderWidth: 2, yAxisID: 'y'
+      },
+      {
+        label: 'Won',
+        data: won.map(d => ({ x: d.x, y: d.y })),
+        backgroundColor: 'rgba(92,184,122,0.7)', borderColor: '#5cb87a',
+        pointRadius: won.map(d => Math.max(5, d.stake / 12)), pointHoverRadius: 10, yAxisID: 'y'
+      },
+      {
+        label: 'Lost',
+        data: lost.map(d => ({ x: d.x, y: d.y })),
+        backgroundColor: 'rgba(200,129,74,0.7)', borderColor: '#c8814a',
+        pointRadius: lost.map(d => Math.max(5, d.stake / 12)), pointHoverRadius: 10, yAxisID: 'y'
+      },
+      {
+        label: 'Draw / Push / Cash',
+        data: other.map(d => ({ x: d.x, y: d.y })),
+        backgroundColor: 'rgba(212,168,92,0.7)', borderColor: '#d4a85c',
+        pointRadius: other.map(d => Math.max(5, d.stake / 12)), pointHoverRadius: 10, yAxisID: 'y'
+      }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, animation: { duration: 1000 },
+    interaction: { mode: 'nearest', intersect: true },
+    plugins: {
+      legend: { labels: { color: '#9ca3a0', usePointStyle: true, padding: 16 } },
+      tooltip: {
+        backgroundColor: '#161a20', titleColor: '#e8e6e3', bodyColor: '#c8c6c0',
+        borderColor: '#262b33', borderWidth: 1,
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.dataset.label === 'Cumulative P&L (MYR)') return `Cumulative: MYR ${ctx.parsed.y.toFixed(2)}`;
+            return `${ctx.dataset.label}: MYR ${ctx.parsed.y.toFixed(2)}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        type: 'linear',
+        ticks: {
+          color: '#9ca3a0',
+          callback: function(v) { return dates[v] || ''; },
+          maxTicksLimit: 14
+        },
+        grid: { color: 'rgba(38,43,51,0.5)' },
+        title: { display: true, text: 'Bet Date', color: '#9ca3a0' }
+      },
+      y: {
+        ticks: { color: '#9ca3a0', callback: v => 'MYR ' + v },
+        grid: { color: 'rgba(38,43,51,0.5)' },
+        title: { display: true, text: 'Profit / Loss (MYR)', color: '#9ca3a0' }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
