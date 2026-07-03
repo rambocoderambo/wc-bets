@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "buildCommand": "pip install -r requirements.txt && python main.py",
+  "outputDirectory": "output",
+  "installCommand": "",
+  "framework": null,
+  "cleanUrls": true,
+  "trailingSlash": false
+}

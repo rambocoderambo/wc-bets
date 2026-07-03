@@ -41,6 +41,9 @@ def main():
     
     live_path = "output/live_r32.html"
     generate_live_report(bets, metrics, analysis, advice, recommendations, chart_path, live_path)
+    # Also copy as index.html for Vercel root
+    import shutil
+    shutil.copy2(live_path, "output/index.html")
     print(f"  Live R32 report: file://{os.path.abspath(live_path)}")
     
     print(f"\nDone! Dashboard saved to {output_path}")
