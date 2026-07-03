@@ -299,22 +299,18 @@ def generate_recommendations(bets, metrics):
         exp_t2_goals = (gs2["avg_gf"] + gs1["avg_ga"]) / 2
         est_total = round(exp_t1_goals + exp_t2_goals, 1)
 
-        # Adjust for AH handicap — if the handicap is large (-1.5, -2), 
-        # the favorite needs to win by multiple goals, inflating total goals
+        # Adjust for AH handicap — if the favorite is giving goals, the match 
+        # must have enough total goals for them to cover the spread
         try:
             ah_abs = abs(float(handicap_str)) if handicap_str and handicap_str not in ("0", "PK", "") else 0.25
         except ValueError:
             ah_abs = 0.25
-        if ah_abs >= 1.5:
-            # Minimum goals for favorite to cover: hcp + 1 (e.g., -2 needs win by 3+)
-            min_goals_for_cover = ah_abs + 1 if total_score > -3 else 0
-            # If we're recommending the favorite, the score must have enough goals
-            if total_score > -3 and min_goals_for_cover > est_total:
-                est_total = min_goals_for_cover
-        elif ah_abs >= 0.75:
-            # Moderate handicap: boost expected total slightly
-            if total_score > -3:
-                est_total = max(est_total, ah_abs + 0.5)
+        if ah_abs >= 0.75 and total_score > -3:
+            # For the favorite to cover the handicap, typical score has them
+            # winning by hcp+1 goals. Total goals ~ (hcp+1) + 0.5 = hcp + 1.5
+            realistic_total = ah_abs + 1.5
+            if realistic_total > est_total:
+                est_total = round(realistic_total, 1)
 
         line = fixture["ou_line"]
         if est_total > line + 0.3:
