@@ -1580,3 +1580,76 @@ Return:
  24.96 MYR
 Status:Won
 Result:3 : 0
+
+Purchase Ticket ID:1000000000000000007
+Bet Ticket ID:1000000000000000008
+Bet Date:2026/07/02 20:33
+Bet:Portugal -0.75
+Odds:
+ 1.96 EU
+Bet Type:
+ FT Asian Handicap
+Event:Portugal vs Croatia
+Event Date:2026/07/02 20:33
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 74.00 MYR
+Status:Half-won
+Result:2 : 1
+
+Purchase Ticket ID:1000000000000000008
+Bet Ticket ID:1000000000000000009
+Bet Date:2026/07/02 20:33
+Bet:Portugal -0.5
+Odds:
+ 1.75 EU
+Bet Type:
+ FT Asian Handicap
+Event:Portugal vs Croatia
+Event Date:2026/07/02 20:33
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 87.50 MYR
+Status:Won
+Result:2 : 1
+
+
+Purchase Ticket ID:860498359453696000
+Bet Ticket ID:860498359453696001
+Bet Date:2026/07/02 20:33
+Bet:Portugal -0.75
+Odds:
+ 1.96 EU
+Bet Type:
+ FT Asian Handicap
+Event:Portugal vs Croatia
+Event Date:2026/07/03 07:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 74.00 MYR
+Status:Half-won
+Result:2 : 1
+
+Purchase Ticket ID:860498327019126784
+Bet Ticket ID:860498327019126785
+Bet Date:2026/07/02 20:33
+Bet:Portugal -0.5
+Odds:
+ 1.75 EU
+Bet Type:
+ FT Asian Handicap
+Event:Portugal vs Croatia
+Event Date:2026/07/03 07:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 87.50 MYR
+Status:Won
+Result:2 : 1

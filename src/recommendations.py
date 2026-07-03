@@ -99,6 +99,7 @@ R32_FIXTURES = [
         "ou_line": 2.25, "ou_over_odds": 1.825, "ou_under_odds": 2.025,
         "odds_1x2_home": 1.77, "odds_1x2_draw": 3.53, "odds_1x2_away": 4.90,
         "team1_form": "WWWDW", "team2_form": "DDDLD",
+        "result": "2-1", "result_winner": "Portugal",
     },
     {
         "team1": "Switzerland", "team2": "Algeria",
@@ -527,8 +528,8 @@ def generate_recommendations(bets, metrics):
         except ValueError:
             dt = datetime.max
         is_completed = 1 if r.get("result") else 0
-        # Completed matches: negate timestamp so latest comes first in the group
-        sort_dt = -dt.toordinal() if is_completed else dt.toordinal()
+        # Completed matches: negate combined datetime ordinal + minute so latest comes first
+        sort_dt = -(dt.toordinal() * 1440 + dt.hour * 60 + dt.minute) if is_completed else (dt.toordinal() * 1440 + dt.hour * 60 + dt.minute)
         return (is_completed, sort_dt)
     recs.sort(key=_sort_key)
     return recs
