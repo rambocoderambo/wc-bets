@@ -125,6 +125,32 @@ def refresh_odds():
     return jsonify({"ok": True, "message": "Dashboard refreshed"}), 200
 
 
+@app.route("/live")
+def live():
+    """Generate and serve the live R32 report."""
+    import sys
+    sys.path.insert(0, os.path.join(BASE_DIR, "src"))
+    from parser import parse_bets
+    from metrics import calculate_metrics
+    from analysis import generate_analysis, generate_advice
+    from recommendations import generate_recommendations
+    from r32_report import generate_live_report
+    from visualize import generate_chart
+
+    bets = parse_bets(os.path.join(BASE_DIR, "data", "Bets.txt"))
+    metrics = calculate_metrics(bets)
+    chart_path = os.path.join(OUTPUT_DIR, "cumulative_pnl.html")
+    if not os.path.exists(chart_path):
+        generate_chart(bets, chart_path)
+    analysis = generate_analysis(bets, metrics)
+    advice = generate_advice(bets, metrics, analysis)
+    recommendations = generate_recommendations(bets, metrics)
+    output = os.path.join(OUTPUT_DIR, "live_r32.html")
+    generate_live_report(bets, metrics, analysis, advice, recommendations, chart_path, output)
+    with open(output, "r", encoding="utf-8") as f:
+        return f.read(), 200, {"Content-Type": "text/html; charset=utf-8"}
+
+
 @app.route("/api/parse-bulk", methods=["POST"])
 def parse_bulk():
     data = request.json

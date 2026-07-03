@@ -8,6 +8,7 @@ from visualize import generate_chart
 from analysis import generate_analysis, generate_advice
 from recommendations import generate_recommendations
 from report import generate_report
+from r32_report import generate_live_report
 
 
 def main():
@@ -37,6 +38,11 @@ def main():
     print("Building dashboard...")
     output_path = "output/dashboard.html"
     generate_report(bets, metrics, analysis, advice, recommendations, chart_path, output_path)
+    
+    live_path = "output/live_r32.html"
+    generate_live_report(bets, metrics, analysis, advice, recommendations, chart_path, live_path)
+    print(f"  Live R32 report: file://{os.path.abspath(live_path)}")
+    
     print(f"\nDone! Dashboard saved to {output_path}")
     print(f"Open in browser: file://{os.path.abspath(output_path)}")
 
