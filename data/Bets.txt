@@ -507,7 +507,7 @@ Stake:
  100.00 MYR
 Return:
  99.00 MYR
-Status:Cashed OutPurchase Ticket ID:857204923455651840
+Status:Cashed Out
 Bet Ticket ID:857204923455651841
 Bet Date:2026/06/23 18:26
 Bet:Portugal -2
@@ -539,7 +539,7 @@ Stake:
 Return:
  90.00 MYR
 Status:Won
-Result:5 : 0Purchase Ticket ID:857124768859217920
+Result:5 : 0
 Bet Ticket ID:857124768859217921
 Bet Date:2026/06/23 13:07
 Bet:Portugal -2
@@ -555,7 +555,7 @@ Return:
  99.00 MYR
 Status:Cashed Out
 
-Purchase Ticket ID:857092293340635136
+
 Bet Ticket ID:857092293340635137
 Bet Date:2026/06/23 10:58
 Bet:Algeria -1
@@ -1541,7 +1541,7 @@ Stake:
 Return:
  24.96 MYR
 Status:Won
-Result:3 : 0Purchase Ticket ID:860498359453696000
+Result:3 : 0
 Bet Ticket ID:860498359453696001
 Bet Date:2026/07/02 20:33
 Bet:Portugal -0.75
