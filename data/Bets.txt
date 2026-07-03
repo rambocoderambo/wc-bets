@@ -1595,3 +1595,21 @@ Return:
  74.00 MYR
 Status:Half-won
 Result:2 : 1
+
+Purchase Ticket ID:1000000000000000007
+Bet Ticket ID:1000000000000000008
+Bet Date:2026/07/03 09:51
+Bet:Switzerland -0.5
+Odds:
+ 2.00 EU
+Bet Type:
+ FT Asian Handicap
+Event:Switzerland vs Algeria
+Event Date:2026/07/03 09:51
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 100.00 MYR
+Status:Won
+Result:2 : 0

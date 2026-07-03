@@ -295,10 +295,26 @@ def generate_recommendations(bets, metrics):
         # O/U pick based on actual team goal stats from group stage
         gs1 = team_goals.get(t1, {"avg_gf": 1.5, "avg_ga": 1.0})
         gs2 = team_goals.get(t2, {"avg_gf": 1.0, "avg_ga": 1.5})
-        # Expected total = blend each team's attack with opponent's defense
         exp_t1_goals = (gs1["avg_gf"] + gs2["avg_ga"]) / 2
         exp_t2_goals = (gs2["avg_gf"] + gs1["avg_ga"]) / 2
         est_total = round(exp_t1_goals + exp_t2_goals, 1)
+
+        # Adjust for AH handicap — if the handicap is large (-1.5, -2), 
+        # the favorite needs to win by multiple goals, inflating total goals
+        try:
+            ah_abs = abs(float(handicap_str)) if handicap_str and handicap_str not in ("0", "PK", "") else 0.25
+        except ValueError:
+            ah_abs = 0.25
+        if ah_abs >= 1.5:
+            # Minimum goals for favorite to cover: hcp + 1 (e.g., -2 needs win by 3+)
+            min_goals_for_cover = ah_abs + 1 if total_score > -3 else 0
+            # If we're recommending the favorite, the score must have enough goals
+            if total_score > -3 and min_goals_for_cover > est_total:
+                est_total = min_goals_for_cover
+        elif ah_abs >= 0.75:
+            # Moderate handicap: boost expected total slightly
+            if total_score > -3:
+                est_total = max(est_total, ah_abs + 0.5)
 
         line = fixture["ou_line"]
         if est_total > line + 0.3:
