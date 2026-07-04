@@ -133,13 +133,72 @@ R32_FIXTURES = [
         "odds_1x2_home": 1.53, "odds_1x2_draw": 3.90, "odds_1x2_away": 7.20,
         "team1_form": "WWDWL", "team2_form": "LLWLL",
     },
+]
+
+R16_FIXTURES = [
     {
         "team1": "Canada", "team2": "Morocco",
         "date": "05/Jul 01:00",
-        "ah_line": "Morocco -0.75", "ah_home_odds": 2.05, "ah_away_odds": 1.825,
-        "ou_line": 2.25, "ou_over_odds": 2.00, "ou_under_odds": 1.85,
-        "odds_1x2_home": 4.79, "odds_1x2_draw": 3.54, "odds_1x2_away": 1.78,
-        "team1_form": "LWLWD", "team2_form": "WWLWW",
+        "ah_line": "Morocco -0.5", "ah_home_odds": 2.025, "ah_away_odds": 1.85,
+        "ou_line": 2.25, "ou_over_odds": 1.95, "ou_under_odds": 1.925,
+        "odds_1x2_home": 4.58, "odds_1x2_draw": 3.45, "odds_1x2_away": 1.86,
+        "team1_form": "DWL", "team2_form": "DWW",
+    },
+    {
+        "team1": "Paraguay", "team2": "France",
+        "date": "05/Jul 05:00",
+        "ah_line": "France -2", "ah_home_odds": 1.825, "ah_away_odds": 2.05,
+        "ou_line": 2.75, "ou_over_odds": 2.025, "ou_under_odds": 1.85,
+        "odds_1x2_home": 16.50, "odds_1x2_draw": 7.19, "odds_1x2_away": 1.18,
+        "team1_form": "DWW", "team2_form": "WWW",
+    },
+    {
+        "team1": "Brazil", "team2": "Norway",
+        "date": "06/Jul 04:00",
+        "ah_line": "Brazil -0.75", "ah_home_odds": 2.025, "ah_away_odds": 1.80,
+        "ou_line": 2.75, "ou_over_odds": 1.925, "ou_under_odds": 1.925,
+        "odds_1x2_home": 1.82, "odds_1x2_draw": 3.79, "odds_1x2_away": 4.27,
+        "team1_form": "DWW", "team2_form": "WWL",
+    },
+    {
+        "team1": "Mexico", "team2": "England",
+        "date": "06/Jul 08:00",
+        "ah_line": "England -0.25", "ah_home_odds": 1.825, "ah_away_odds": 2.05,
+        "ou_line": 2.0, "ou_over_odds": 2.10, "ou_under_odds": 1.775,
+        "odds_1x2_home": 3.11, "odds_1x2_draw": 3.21, "odds_1x2_away": 2.41,
+        "team1_form": "WWW", "team2_form": "WDW",
+    },
+    {
+        "team1": "Portugal", "team2": "Spain",
+        "date": "07/Jul 03:00",
+        "ah_line": "Spain -0.5", "ah_home_odds": 1.95, "ah_away_odds": 1.925,
+        "ou_line": 2.5, "ou_over_odds": 1.975, "ou_under_odds": 1.875,
+        "odds_1x2_home": 3.98, "odds_1x2_draw": 3.70, "odds_1x2_away": 1.90,
+        "team1_form": "DWD", "team2_form": "DWW",
+    },
+    {
+        "team1": "USA", "team2": "Belgium",
+        "date": "07/Jul 08:00",
+        "ah_line": "USA PK", "ah_home_odds": 1.975, "ah_away_odds": 1.90,
+        "ou_line": 2.75, "ou_over_odds": 1.90, "ou_under_odds": 1.975,
+        "odds_1x2_home": 2.70, "odds_1x2_draw": 3.48, "odds_1x2_away": 2.55,
+        "team1_form": "WWL", "team2_form": "DDW",
+    },
+    {
+        "team1": "Argentina", "team2": "Egypt",
+        "date": "08/Jul 00:00",
+        "ah_line": "Argentina -1.25", "ah_home_odds": 1.80, "ah_away_odds": 2.075,
+        "ou_line": 2.5, "ou_over_odds": 1.85, "ou_under_odds": 2.00,
+        "odds_1x2_home": 1.35, "odds_1x2_draw": 4.83, "odds_1x2_away": 9.66,
+        "team1_form": "WWW", "team2_form": "DWD",
+    },
+    {
+        "team1": "Switzerland", "team2": "Colombia",
+        "date": "08/Jul 04:00",
+        "ah_line": "Colombia -0.25", "ah_home_odds": 1.90, "ah_away_odds": 1.95,
+        "ou_line": 2.25, "ou_over_odds": 1.85, "ou_under_odds": 2.025,
+        "odds_1x2_home": 3.42, "odds_1x2_draw": 3.23, "odds_1x2_away": 2.22,
+        "team1_form": "DWW", "team2_form": "WWD",
     },
 ]
 
@@ -202,7 +261,7 @@ def generate_recommendations(bets, metrics):
         b_t1, b_t2 = parts[0].strip(), parts[1].strip()
         match_results[key] = {"team1": b_t1, "team2": b_t2, "g1": g1, "g2": g2}
 
-    for fixture in R32_FIXTURES:
+    for fixture in R32_FIXTURES + R16_FIXTURES:
         t1 = fixture["team1"]
         t2 = fixture["team2"]
 

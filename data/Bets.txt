@@ -1613,3 +1613,75 @@ Return:
  100.00 MYR
 Status:Won
 Result:2 : 0
+
+Purchase Ticket ID:1000000000000000008
+Bet Ticket ID:1000000000000000009
+Bet Date:2026/07/03 19:38
+Bet:Argentina -2
+Odds:
+ 1.81 EU
+Bet Type:
+ FT Asian Handicap
+Event:Argentina vs Cape Verde
+Event Date:2026/07/03 19:38
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:1000000000000000009
+Bet Ticket ID:1000000000000000010
+Bet Date:2026/07/03 19:38
+Bet:Over 2
+Odds:
+ 2.08 EU
+Bet Type:
+ FT O/U
+Event:Australia vs Egypt
+Event Date:2026/07/03 19:38
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 50.00 MYR
+Status:Draw
+Result:1 : 1
+
+Purchase Ticket ID:1000000000000000010
+Bet Ticket ID:1000000000000000011
+Bet Date:2026/07/03 19:37
+Bet:Egypt -0.25
+Odds:
+ 2.00 EU
+Bet Type:
+ FT Asian Handicap
+Event:Australia vs Egypt
+Event Date:2026/07/03 19:37
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 25.00 MYR
+Status:Half-lost
+Result:1 : 1
+
+Purchase Ticket ID:1000000000000000011
+Bet Ticket ID:1000000000000000012
+Bet Date:2026/07/03 19:40
+Bet:Colombia -1
+Odds:
+ 1.74 EU
+Bet Type:
+ FT Asian Handicap
+Event:Colombia vs Ghana
+Event Date:2026/07/03 19:40
+League:World Cup 2026
+Stake:
+ 100.00 MYR
+Return:
+ 100.00 MYR
+Status:Draw
+Result:1 : 0

@@ -162,13 +162,13 @@ def generate_report(bets, metrics, analysis, advice, recommendations, chart_path
     </div>
   </div>
 
-  <!-- R32 RECOMMENDATIONS -->
+  <!-- R16 PREDICTIONS -->
   <div class="rec-section">
     <div class="rec-card">
       <div class="rec-header">
         <div>
-          <h2> Round 32 Prediction</h2>
-          <div style="font-size:13px;color:#9ca3a0;margin-top:4px;">Team form, AH odds, and score analysis for remaining knockout matches</div>
+          <h2> Round 16 Prediction</h2>
+          <div style="font-size:13px;color:#9ca3a0;margin-top:4px;">Asian Handicap &amp; O/U picks for knockout stage matches</div>
         </div>
         <div class="roi-badge">Target: 80% Win Rate</div>
       </div>
@@ -686,7 +686,7 @@ async function refreshOdds() {
 }
 </script>
 <div style="margin-top:40px;padding:16px 24px;border-top:1px solid #1f242c;font-size:12px;color:#6b7278;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;">
-  <span>WC Bets Analytics v1.0.0</span>
+  <span>WC Bets Analytics v1.1.0</span>
   <span>Betting data from Bets.txt &bull; 90 bets imported &bull; <a href="CHANGELOG.md" style="color:#5b8def;text-decoration:none;">Changelog</a></span>
 </div>
 </body>
