@@ -139,18 +139,36 @@ def render_completed(match, a1, a2):
     pred = match["predicted_score"]
     result_display = match["result"].replace("-", " - ")
     p1, p2 = pred.split("-")
-    score_match = int(p1) == a1 and int(p2) == a2
-    direction_match = (int(p1) > int(p2) and a1 > a2) or (int(p1) < int(p2) and a1 < a2) or (int(p1) == int(p2) and a1 == a2)
 
-    if score_match:
-        correct_label = "SCORE CORRECT"
+    # Evaluate actual picks to show meaningful summary
+    pick_wins = 0
+    pick_total = 0
+    pick_details = []
+    for p in match["picks"]:
+        lbl = p["label"]
+        tp = p["type"]
+        pick_total += 1
+        if tp == "AH":
+            rs, _ = _eval_ah(lbl, match["team1"], match["team2"], a1, a2)
+        else:
+            rs, _ = _eval_ou(lbl, a1 + a2)
+        if rs in ("WON", "HALF WON"):
+            pick_wins += 1
+            pick_details.append(f"{tp}: W")
+        elif rs == "PUSH":
+            pick_details.append(f"{tp}: P")
+        else:
+            pick_details.append(f"{tp}: L")
+
+    if pick_wins == pick_total:
+        correct_label = "2/2 WON"
         correct_color = "#5cb87a"
-    elif direction_match:
-        correct_label = "DIRECTION ✓"
-        correct_color = "#5aa9a9"
-    else:
-        correct_label = "MISSED"
+    elif pick_wins == 0:
+        correct_label = "0/2 LOST"
         correct_color = "#c8814a"
+    else:
+        correct_label = f"{pick_wins}/{pick_total} WON"
+        correct_color = "#d4a85c"
 
     pick_cards = ""
     for p in match["picks"]:
