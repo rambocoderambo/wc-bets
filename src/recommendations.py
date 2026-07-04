@@ -143,6 +143,7 @@ R16_FIXTURES = [
         "ou_line": 2.25, "ou_over_odds": 1.95, "ou_under_odds": 1.925,
         "odds_1x2_home": 4.58, "odds_1x2_draw": 3.45, "odds_1x2_away": 1.86,
         "team1_form": "DWL", "team2_form": "DWW",
+        "result": "0-3", "result_winner": "Morocco",
     },
     {
         "team1": "Paraguay", "team2": "France",
@@ -151,6 +152,7 @@ R16_FIXTURES = [
         "ou_line": 2.75, "ou_over_odds": 2.025, "ou_under_odds": 1.85,
         "odds_1x2_home": 16.50, "odds_1x2_draw": 7.19, "odds_1x2_away": 1.18,
         "team1_form": "DWW", "team2_form": "WWW",
+        "result": "0-1", "result_winner": "France",
     },
     {
         "team1": "Brazil", "team2": "Norway",

@@ -1685,3 +1685,58 @@ Return:
  100.00 MYR
 Status:Draw
 Result:1 : 0
+
+
+Purchase Ticket ID:861121028515069952
+Bet Ticket ID:861121028515069953
+Bet Date:2026/07/04 13:47
+Bet:France -1.75
+Odds:
+ 1.79 EU
+Bet Type:
+ FT Asian Handicap
+Event:Paraguay vs France
+Event Date:2026/07/05 05:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 0.00 MYR
+Status:Lost
+Result:0 : 1
+
+Purchase Ticket ID:861264953150169088
+Bet Ticket ID:861264953150169089
+Bet Date:2026/07/04 23:19
+Bet:Yassine Bounou (Bono) Over 2.5
+Odds:
+ 2.00 EU
+Bet Type:
+ Goalkeeper Over Saves
+Event:Canada vs Morocco
+Event Date:2026/07/05 01:00
+League:World Cup 2026
+Stake:
+ 20.00 MYR
+Return:
+ 40.00 MYR
+Status:Won
+Result:Yassine Bounou (Bono) Over 0.5, Yassine Bounou (Bono) Over 1.5, Yassine Bounou (Bono) Over 2.5
+
+Purchase Ticket ID:861120663723868160
+Bet Ticket ID:861120663723868161
+Bet Date:2026/07/04 13:45
+Bet:Morocco -0.5
+Odds:
+ 1.83 EU
+Bet Type:
+ FT Asian Handicap
+Event:Canada vs Morocco
+Event Date:2026/07/05 01:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 91.50 MYR
+Status:Won
+Result:0 : 3

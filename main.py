@@ -12,17 +12,18 @@ from r32_report import generate_live_report
 
 
 def split_bets(bets):
-    """Split bets into group stage vs R32 based on event matching R32_FIXTURES."""
-    r32_events = set()
-    for f in R32_FIXTURES:
-        r32_events.add(f"{f['team1']} vs {f['team2']}")
-    gs, r32 = [], []
+    """Split bets into group stage vs knockout (R32+R16) based on event matching fixtures."""
+    from recommendations import R32_FIXTURES, R16_FIXTURES
+    ko_events = set()
+    for f in R32_FIXTURES + R16_FIXTURES:
+        ko_events.add(f"{f['team1']} vs {f['team2']}")
+    gs, ko = [], []
     for b in bets:
-        if b.get("event", "") in r32_events:
-            r32.append(b)
+        if b.get("event", "") in ko_events:
+            ko.append(b)
         else:
             gs.append(b)
-    return gs, r32
+    return gs, ko
 
 
 def main():
