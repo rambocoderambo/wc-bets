@@ -357,6 +357,15 @@ def _parse_compressed_format2(raw):
     return results, len(results)
 
 if __name__ == "__main__":
+    # Write PID so restart script can find us
+    import os
+    with open(os.path.join(BASE_DIR, "server.pid"), "w") as f:
+        f.write(str(os.getpid()))
     print("Starting Betting Dashboard Server...")
     print("Open http://localhost:5000 in your browser")
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    try:
+        app.run(host="0.0.0.0", port=5000, debug=True)
+    finally:
+        pid_file = os.path.join(BASE_DIR, "server.pid")
+        if os.path.exists(pid_file):
+            os.remove(pid_file)
