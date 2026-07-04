@@ -72,7 +72,7 @@ R32_FIXTURES = [
         "ou_line": 2.25, "ou_over_odds": 1.925, "ou_under_odds": 1.95,
         "odds_1x2_home": 2.20, "odds_1x2_draw": 3.22, "odds_1x2_away": 3.51,
         "team1_form": "LWDWL", "team2_form": "LWLWD",
-        "result": "2-2", "result_winner": "Draw",
+        "result": "3-2", "result_winner": "Belgium",
     },
     {
         "team1": "USA", "team2": "Bosnia",
