@@ -411,32 +411,41 @@ def generate_report(bets, metrics, analysis, advice, recommendations, chart_path
 
   <!-- Analysis + Advice -->
   <div class="analysis-section">
-    <div class="analysis-grid">
-      <div class="analysis-card">
-        <h3> Strategy Analysis <span style="background:#5b8def;color:#fff;padding:2px 10px;border-radius:6px;font-size:11px;font-weight:600;margin-left:8px;vertical-align:middle;">UPDATED</span></h3>
-        <div style="font-size:11px;color:#6b7278;margin-bottom:10px;">Last updated: """ + __import__('datetime').datetime.now().strftime('%d %b %Y %H:%M') + """</div>
-        <ul>
+    <div style="font-size:14px;color:#9ca3a0;margin-bottom:16px;font-weight:600;">BETTING PERFORMANCE BY STAGE</div>
 """
 
-    for item in analysis:
-        html += f"<li><strong>{item['title']}:</strong> {item['body']}</li>\n"
+    def _render_block(label, an_data, ad_data):
+        from datetime import datetime
+        ts = datetime.now().strftime("%d %b %Y %H:%M")
+        b = ""
+        b += '<div style="margin-bottom:20px;background:#161a20;border:1px solid #262b33;border-radius:12px;padding:20px;">'
+        b += '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px;">'
+        b += '<h3 style="font-size:15px;font-weight:600;color:#e8e6e3;margin:0;">' + label + '</h3>'
+        b += '<span style="background:#5b8def;color:#fff;padding:2px 10px;border-radius:6px;font-size:11px;font-weight:600;">UPDATED</span></div>'
+        b += '<div style="font-size:11px;color:#6b7278;margin-bottom:10px;">Last updated: ' + ts + '</div>'
+        b += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">'
+        b += '<div><h4 style="font-size:13px;font-weight:600;color:#d4a85c;margin-bottom:8px;">Strategy Analysis</h4><ul style="list-style:none;padding:0;margin:0;">'
+        for it in an_data:
+            b += '<li style="font-size:13px;line-height:1.6;color:#c8c6c0;margin-bottom:6px;"><strong>' + it["title"] + ':</strong> ' + it["body"] + '</li>'
+        b += '</ul></div>'
+        b += '<div><h4 style="font-size:13px;font-weight:600;color:#5aa9a9;margin-bottom:8px;">Actionable Advice</h4>'
+        cm = {"danger": "#c8814a", "warning": "#d4a85c", "info": "#5b8def", "success": "#5cb87a"}
+        for it in ad_data:
+            c = cm.get(it["type"], "#5b8def")
+            rv, gv, bv = int(c[1:3], 16), int(c[3:5], 16), int(c[5:7], 16)
+            b += '<div style="border-left:3px solid ' + c + ';padding:8px 12px;background:rgba(' + str(rv) + ',' + str(gv) + ',' + str(bv) + ',.06);border-radius:0 6px 6px 0;margin-bottom:8px;font-size:13px;line-height:1.5;color:#c8c6c0;"><strong>' + it["title"] + '.</strong> ' + it["body"] + '</div>'
+        b += '</div></div></div>'
+        return b
+
+    if gs_analysis and gs_advice:
+        html += _render_block("Group Stage (Before R32)", gs_analysis, gs_advice)
+    if r32_analysis and r32_advice:
+        html += _render_block("Round of 32", r32_analysis, r32_advice)
+    html += _render_block("Overall (All Bets)", analysis, advice)
 
     html += """
-        </ul>
-      </div>
-      <div class="analysis-card">
-        <h3> Actionable Advice <span style="background:#5b8def;color:#fff;padding:2px 10px;border-radius:6px;font-size:11px;font-weight:600;margin-left:8px;vertical-align:middle;">UPDATED</span></h3>
-        <div style="font-size:11px;color:#6b7278;margin-bottom:10px;">Last updated: """ + __import__('datetime').datetime.now().strftime('%d %b %Y %H:%M') + """</div>
-"""
-
-    for item in advice:
-        html += f"""
-        <div class="insight {item['type']}"><strong>{item['title']}.</strong> {item['body']}</div>"""
-
-    html += """
-      </div>
-    </div>
   </div>
+  <!-- End Analysis + Advice -->
 
   <!-- Bet History -->
   <div class="history-section">
