@@ -143,22 +143,23 @@ def generate_analysis(bets, metrics):
 def generate_advice(bets, metrics, analysis):
     advice = []
 
-    # Advice 1: Stop live betting
+    # Advice 1: Stop live betting (only if there ARE live bets)
     live_bets = [b for b in bets if "live" in (b.get("market") or "").lower()]
     live_profits_list = [b["profit"] for b in live_bets if b.get("profit") is not None]
     live_pnl = round(sum(live_profits_list), 2) if live_profits_list else 0
     non_live_pnl = round(metrics["total_pnl"] - live_pnl, 2)
 
-    advice.append({
-        "type": "danger",
-        "title": "Stop live betting immediately",
-        "body": (
-            f"Your live betting record is bleeding MYR {abs(live_pnl)}. "
-            f"Without those bets, your P&L improves from MYR {metrics['total_pnl']} "
-            f"to MYR {non_live_pnl}. Live betting removes the analytical advantage "
-            f"you have pre-match."
-        )
-    })
+    if live_bets:
+        advice.append({
+            "type": "danger",
+            "title": "Stop live betting immediately",
+            "body": (
+                f"Your live betting record is bleeding MYR {abs(live_pnl)}. "
+                f"Without those bets, your P&L improves from MYR {metrics['total_pnl']} "
+                f"to MYR {non_live_pnl}. Live betting removes the analytical advantage "
+                f"you have pre-match."
+            )
+        })
 
     # Advice 2: Cap stake
     advice.append({
