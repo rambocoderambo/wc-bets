@@ -324,6 +324,118 @@ def generate_advice(bets, metrics, analysis):
             )
         })
 
+    # Advice 6: Focus on one handicap line per match
+    multi_line_events = {}
+    for b in bets:
+        evt = b.get("event", "")
+        if evt:
+            if evt not in multi_line_events:
+                multi_line_events[evt] = set()
+            multi_line_events[evt].add(b.get("bet", ""))
+    worst_multi = max(multi_line_events, key=lambda e: len(multi_line_events[e])) if multi_line_events else None
+    worst_count = len(multi_line_events[worst_multi]) if worst_multi else 0
+    if worst_count >= 3:
+        advice.append({
+            "type": "warning",
+            "title": "Stick to one handicap line per match",
+            "body": (
+                f"You bet on {worst_count} different handicap lines for \"{worst_multi}\". "
+                f"Each extra line is a separate bet on the same match outcome — it doesn't improve your edge, "
+                f"it just increases variance. Analyze the best line pre-match and commit to it."
+            )
+        })
+
+    # Advice 7: Track edge by market
+    if metrics["total_bets"] >= 10:
+        best_market = None
+        best_market_roi = -999
+        for m, s in (metrics.get("market_stats") or {}).items():
+            if isinstance(s, dict) and s.get("bets", 0) >= 3 and s.get("stake", 0) > 0:
+                roi = s["pnl"] / s["stake"] * 100
+                if roi > best_market_roi:
+                    best_market_roi = roi
+                    best_market = m
+        if best_market and best_market_roi > 5:
+            advice.append({
+                "type": "success",
+                "title": f"Your edge is in {best_market.split()[0]} markets",
+                "body": (
+                    f"Your best-performing market is {best_market} with {round(best_market_roi,1)}% ROI. "
+                    f"Consider allocating 60-70% of your bankroll to this market type "
+                    f"while reducing exposure to weaker markets."
+                )
+            })
+
+    # Advice 8: Small stakes compound
+    small_bets = [b for b in bets if b.get("stake") and b["stake"] <= 20 and b.get("profit") is not None]
+    if small_bets and len(small_bets) >= 5:
+        small_pnl = round(sum(b["profit"] for b in small_bets), 1)
+        small_roi = round(small_pnl / sum(b["stake"] for b in small_bets) * 100, 1) if sum(b["stake"] for b in small_bets) > 0 else 0
+        if small_roi > 10:
+            advice.append({
+                "type": "success",
+                "title": "Small stakes are outperforming",
+                "body": (
+                    f"Bets under MYR 20 returned {small_roi}% ROI (+MYR {small_pnl}) across {len(small_bets)} bets. "
+                    f"Consider scaling these up gradually — your smaller bets show better selection discipline."
+                )
+            })
+        elif small_roi < -10:
+            advice.append({
+                "type": "info",
+                "title": "Small bets need review",
+                "body": (
+                    f"Bets under MYR 20 returned {small_roi}% ROI (-MYR {abs(small_pnl)}) across {len(small_bets)} bets. "
+                    f"Smaller stakes don't mean lower standards — every bet should pass the same analysis filter."
+                )
+            })
+
+    # Advice 9: Favorites vs underdogs balance
+    favs = [b for b in bets if b.get("odds") and b["odds"] <= 1.8 and b.get("profit") is not None]
+    dogs = [b for b in bets if b.get("odds") and b["odds"] >= 2.5 and b.get("profit") is not None]
+    if favs and dogs and len(favs) >= 3 and len(dogs) >= 3:
+        fav_roi = round(sum(b["profit"] for b in favs) / sum(b["stake"] for b in favs) * 100, 1) if sum(b["stake"] for b in favs) > 0 else 0
+        dog_roi = round(sum(b["profit"] for b in dogs) / sum(b["stake"] for b in dogs) * 100, 1) if sum(b["stake"] for b in dogs) > 0 else 0
+        diff = fav_roi - dog_roi
+        if diff > 20:
+            advice.append({
+                "type": "info",
+                "title": "Stick with favorites for now",
+                "body": (
+                    f"Favorites (odds ≤ 1.8) return {fav_roi}% ROI vs underdogs (odds ≥ 2.5) at {dog_roi}% ROI "
+                    f"({round(diff,1)}% gap). Your analysis method works best for stronger teams — "
+                    f"focus there and limit underdog bets until your value model improves."
+                )
+            })
+        elif diff < -20:
+            advice.append({
+                "type": "info",
+                "title": "You have an underdog edge",
+                "body": (
+                    f"Underdogs (odds ≥ 2.5) return {dog_roi}% ROI vs favorites (odds ≤ 1.8) at {fav_roi}% ROI. "
+                    f"Your value-finding ability shines on longer prices — lean into this strength."
+                )
+            })
+
+    # Advice 10: Stake to bankroll ratio
+    total_stake = metrics.get("total_stake", 0)
+    total_pnl = metrics.get("total_pnl", 0)
+    if total_stake > 0:
+        implied_bankroll = total_stake / (metrics.get("total_bets", 1) or 1) * 20
+        if implied_bankroll > 0:
+            max_stake = metrics.get("max_stake", 0)
+            pct_of_bankroll = round(max_stake / implied_bankroll * 100, 1)
+            if pct_of_bankroll > 5:
+                advice.append({
+                    "type": "warning",
+                    "title": f"Single bets exceed {pct_of_bankroll}% of bankroll",
+                    "body": (
+                        f"Your largest bet (MYR {max_stake:.0f}) represents ~{pct_of_bankroll}% of estimated bankroll "
+                        f"(MYR {implied_bankroll:.0f}). Professional staking limits single bets to 1-2%. "
+                        f"Either increase your bankroll or cut max stake to MYR {round(implied_bankroll * 0.02):.0f}."
+                    )
+                })
+
     return advice
 
 
