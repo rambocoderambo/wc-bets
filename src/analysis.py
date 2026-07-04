@@ -137,6 +137,95 @@ def generate_analysis(bets, metrics):
             )
         })
 
+    # 7. Odds Range Performance
+    odds_ranges = {"1.0-1.5 (Heavy Fav)": (1.0, 1.5), "1.5-2.0 (Moderate)": (1.5, 2.0), "2.0+ (Value)": (2.0, 999)}
+    odds_stats = []
+    resolved_w_profit = [b for b in resolved if b.get("odds") and b.get("profit") is not None]
+    for label, (lo, hi) in odds_ranges.items():
+        group = [b for b in resolved_w_profit if lo <= b["odds"] < hi]
+        if group:
+            gp = sum(b["profit"] for b in group)
+            gc = len(group)
+            gw = len([b for b in group if b["profit"] > 0])
+            odds_stats.append(f"{label}: {gw}/{gc} won ({round(gw/gc*100,1)}%), P&L MYR {round(gp,1)}")
+    if odds_stats:
+        lines.append({
+            "icon": "odds-range",
+            "title": "Performance by odds range",
+            "body": "Breaking down results by price bracket: " + " | ".join(odds_stats) + ". Heavy favorites show strong returns while value bets may need more volume."
+        })
+
+    # 8. Win/Loss Magnitude — are wins larger than losses?
+    wins = [b for b in resolved if b.get("profit") and b["profit"] > 0]
+    losses = [b for b in resolved if b.get("profit") and b["profit"] < 0]
+    if wins and losses:
+        avg_win = round(sum(b["profit"] for b in wins) / len(wins), 2)
+        avg_loss = round(abs(sum(b["profit"] for b in losses) / len(losses)), 2)
+        ratio = round(avg_win / avg_loss, 2) if avg_loss > 0 else 0
+        lines.append({
+            "icon": "win-loss-mag",
+            "title": "Win vs Loss magnitude",
+            "body": (
+                f"Average winning bet: MYR {avg_win} vs average losing bet: MYR {avg_loss} "
+                f"(ratio {ratio}:1). {'Wins outweigh losses — strong risk/reward.' if ratio > 1.2 else 'Losses almost match wins in size — consider tighter stop-losses.' if ratio < 0.8 else 'Wins and losses are similar in magnitude.'}"
+            )
+        })
+
+    # 9. ROI by Market Type
+    market_groups = {}
+    for b in resolved_w_profit:
+        m = b.get("market", "Other")
+        if m not in market_groups:
+            market_groups[m] = {"stake": 0, "pnl": 0, "count": 0}
+        market_groups[m]["stake"] += b.get("stake", 0)
+        market_groups[m]["pnl"] += b["profit"]
+        market_groups[m]["count"] += 1
+    market_rois = []
+    for m, s in sorted(market_groups.items(), key=lambda x: x[1]["count"], reverse=True):
+        if s["count"] >= 2:
+            roi_val = round(s["pnl"] / s["stake"] * 100, 1) if s["stake"] > 0 else 0
+            market_rois.append(f"{m}: {roi_val}% ({s['count']} bets)")
+    if market_rois:
+        lines.append({
+            "icon": "market-roi",
+            "title": "ROI by market type",
+            "body": "Return on investment by market: " + " | ".join(market_rois) + ". " + (
+                "Asian Handicap dominates volume — monitor its ROI closely." if any("Asian Handicap" in m for m in market_rois) else ""
+            )
+        })
+
+    # 10. Consecutive result impact — performance after a win vs after a loss
+    if len(resolved_sorted) >= 3:
+        after_win = {"bets": 0, "wins": 0, "pnl": 0}
+        after_loss = {"bets": 0, "wins": 0, "pnl": 0}
+        for i in range(1, len(resolved_sorted)):
+            prev = resolved_sorted[i - 1]
+            curr = resolved_sorted[i]
+            prev_won = prev["status"] in ("Won", "Half-won")
+            if prev_won:
+                after_win["bets"] += 1
+                if curr.get("profit"): after_win["pnl"] += curr["profit"]
+                if curr["status"] in ("Won", "Half-won"): after_win["wins"] += 1
+            else:
+                after_loss["bets"] += 1
+                if curr.get("profit"): after_loss["pnl"] += curr["profit"]
+                if curr["status"] in ("Won", "Half-won"): after_loss["wins"] += 1
+        if after_win["bets"] >= 3 and after_loss["bets"] >= 3:
+            aw_pct = round(after_win["wins"] / after_win["bets"] * 100, 1)
+            al_pct = round(after_loss["wins"] / after_loss["bets"] * 100, 1)
+            aw_pnl = round(after_win["pnl"], 1)
+            al_pnl = round(after_loss["pnl"], 1)
+            gap = aw_pct - al_pct
+            lines.append({
+                "icon": "momentum",
+                "title": "Momentum after wins vs losses",
+                "body": (
+                    f"After a WIN: {aw_pct}% win rate, MYR {aw_pnl} P&L ({after_win['bets']} bets). "
+                    f"After a LOSS: {al_pct}% win rate, MYR {al_pnl} P&L ({after_loss['bets']} bets). "
+                    f"{'Strong momentum effect — winning builds confidence.' if gap > 10 else 'No significant momentum effect — disciplined regardless of result.' if abs(gap) < 5 else 'Better results follow losses — you adapt after mistakes.' if gap < -5 else 'Slight edge when riding a win streak.'}"
+                )
+            })
+
     return lines
 
 
