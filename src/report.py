@@ -413,6 +413,7 @@ def generate_report(bets, metrics, analysis, advice, recommendations, chart_path
     <div class="analysis-grid">
       <div class="analysis-card">
         <h3> Strategy Analysis <span style="background:#5b8def;color:#fff;padding:2px 10px;border-radius:6px;font-size:11px;font-weight:600;margin-left:8px;vertical-align:middle;">UPDATED</span></h3>
+        <div style="font-size:11px;color:#6b7278;margin-bottom:10px;">Last updated: """ + __import__('datetime').datetime.now().strftime('%d %b %Y %H:%M') + """</div>
         <ul>
 """
 
@@ -424,6 +425,7 @@ def generate_report(bets, metrics, analysis, advice, recommendations, chart_path
       </div>
       <div class="analysis-card">
         <h3> Actionable Advice <span style="background:#5b8def;color:#fff;padding:2px 10px;border-radius:6px;font-size:11px;font-weight:600;margin-left:8px;vertical-align:middle;">UPDATED</span></h3>
+        <div style="font-size:11px;color:#6b7278;margin-bottom:10px;">Last updated: """ + __import__('datetime').datetime.now().strftime('%d %b %Y %H:%M') + """</div>
 """
 
     for item in advice:
