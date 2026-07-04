@@ -2,7 +2,8 @@ import os
 from completed_render import render_completed
 
 
-def generate_report(bets, metrics, analysis, advice, recommendations, chart_path, output_path="output/dashboard.html"):
+def generate_report(bets, metrics, analysis, advice, recommendations, chart_path, output_path="output/dashboard.html",
+                    gs_analysis=None, gs_advice=None, r32_analysis=None, r32_advice=None):
     chart_html = ""
     if os.path.exists(chart_path):
         with open(chart_path, "r", encoding="utf-8") as f:

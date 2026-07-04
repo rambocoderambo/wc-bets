@@ -6,9 +6,23 @@ from parser import parse_bets
 from metrics import calculate_metrics
 from visualize import generate_chart
 from analysis import generate_analysis, generate_advice
-from recommendations import generate_recommendations
+from recommendations import generate_recommendations, R32_FIXTURES
 from report import generate_report
 from r32_report import generate_live_report
+
+
+def split_bets(bets):
+    """Split bets into group stage vs R32 based on event matching R32_FIXTURES."""
+    r32_events = set()
+    for f in R32_FIXTURES:
+        r32_events.add(f"{f['team1']} vs {f['team2']}")
+    gs, r32 = [], []
+    for b in bets:
+        if b.get("event", "") in r32_events:
+            r32.append(b)
+        else:
+            gs.append(b)
+    return gs, r32
 
 
 def main():
@@ -16,10 +30,14 @@ def main():
     bets = parse_bets("data/Bets.txt")
     print(f"  {len(bets)} bets parsed")
 
+    gs_bets, r32_bets = split_bets(bets)
+    print(f"  Group stage: {len(gs_bets)} | R32: {len(r32_bets)}")
+
     print("Calculating metrics...")
     metrics = calculate_metrics(bets)
-    print(f"  Win: {metrics['win_pct']}% | Loss: {metrics['loss_pct']}% | P&L: {metrics['total_pnl']}")
-    print(f"  Avg stake: MYR {metrics['avg_stake']} | Best: {metrics['best_bet']['bet']} (+{metrics['best_bet']['profit']})")
+    gs_metrics = calculate_metrics(gs_bets)
+    r32_metrics = calculate_metrics(r32_bets)
+    print(f"  Overall: {metrics['total_pnl']} | GS: {gs_metrics['total_pnl']} | R32: {r32_metrics['total_pnl']}")
 
     print("Generating chart...")
     chart_path = "output/cumulative_pnl.html"
@@ -29,7 +47,11 @@ def main():
     print("Running analysis...")
     analysis = generate_analysis(bets, metrics)
     advice = generate_advice(bets, metrics, analysis)
-    print(f"  {len(analysis)} findings, {len(advice)} recommendations")
+    gs_analysis = generate_analysis(gs_bets, gs_metrics)
+    gs_advice = generate_advice(gs_bets, gs_metrics, gs_analysis)
+    r32_analysis = generate_analysis(r32_bets, r32_metrics)
+    r32_advice = generate_advice(r32_bets, r32_metrics, r32_analysis)
+    print(f"  Overall: {len(analysis)} findings | GS: {len(gs_analysis)} | R32: {len(r32_analysis)}")
 
     print("Generating R32 recommendations...")
     recommendations = generate_recommendations(bets, metrics)
@@ -37,11 +59,12 @@ def main():
 
     print("Building dashboard...")
     output_path = "output/dashboard.html"
-    generate_report(bets, metrics, analysis, advice, recommendations, chart_path, output_path)
+    generate_report(bets, metrics, analysis, advice, recommendations, chart_path, output_path,
+                    gs_analysis=gs_analysis, gs_advice=gs_advice,
+                    r32_analysis=r32_analysis, r32_advice=r32_advice)
     
     live_path = "output/live_r32.html"
     generate_live_report(bets, metrics, analysis, advice, recommendations, chart_path, live_path)
-    # Also copy as index.html for Vercel root
     import shutil
     shutil.copy2(live_path, "output/index.html")
     print(f"  Live R32 report: file://{os.path.abspath(live_path)}")
