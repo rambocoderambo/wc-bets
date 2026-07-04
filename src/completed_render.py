@@ -139,7 +139,18 @@ def render_completed(match, a1, a2):
     pred = match["predicted_score"]
     result_display = match["result"].replace("-", " - ")
     p1, p2 = pred.split("-")
-    correct = (int(p1) > int(p2) and a1 > a2) or (int(p1) < int(p2) and a1 < a2) or (int(p1) == int(p2) and a1 == a2)
+    score_match = int(p1) == a1 and int(p2) == a2
+    direction_match = (int(p1) > int(p2) and a1 > a2) or (int(p1) < int(p2) and a1 < a2) or (int(p1) == int(p2) and a1 == a2)
+
+    if score_match:
+        correct_label = "SCORE CORRECT"
+        correct_color = "#5cb87a"
+    elif direction_match:
+        correct_label = "DIRECTION ✓"
+        correct_color = "#5aa9a9"
+    else:
+        correct_label = "MISSED"
+        correct_color = "#c8814a"
 
     pick_cards = ""
     for p in match["picks"]:
@@ -162,10 +173,7 @@ def render_completed(match, a1, a2):
             '<div style="margin-top:4px;font-size:12px;font-weight:600;color:{3};">{4}</div>'
             '</div>'
         ).format(tp, lbl, ods, rc, rs, conf_color, conf.title())
-
-    correct_label = "CORRECT" if correct else "MISSED"
-    correct_color = "#5cb87a" if correct else "#c8814a"
-
+ 
     html = (
         '<div style="cursor:pointer;" onclick="var d=this.nextElementSibling;if(d)d.style.display=d.style.display===&#39;block&#39;?&#39;none&#39;:&#39;block&#39;;">'
         '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:12px 16px;background:#0d1114;border-radius:8px;margin-bottom:4px;">'
