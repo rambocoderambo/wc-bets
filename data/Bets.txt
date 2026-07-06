@@ -1740,3 +1740,112 @@ Return:
  91.50 MYR
 Status:Won
 Result:0 : 3
+
+
+Purchase Ticket ID:861265798264709120
+Bet Ticket ID:861265798264709121
+Bet Date:2026/07/04 23:22
+Bet:Michael Olise Over 0.5
+Odds:
+ 2.30 EU
+Bet Type:
+ Player Over Assist
+Event:Paraguay vs France
+Event Date:2026/07/05 05:00
+League:World Cup 2026
+Stake:
+ 20.00 MYR
+Return:
+ 0.00 MYR
+Status:Lost
+
+
+Purchase Ticket ID:861768499990298624
+Bet Ticket ID:861768499990298625
+Bet Date:2026/07/06 08:40
+Bet:Over 2
+Odds:
+ 1.87 EU
+Bet Type:
+ FT O/U
+Event:Mexico vs England
+Event Date:2026/07/06 09:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 93.50 MYR
+Status:Won
+Result:2 : 3
+
+Purchase Ticket ID:861430254798004224
+Bet Ticket ID:861430254798004225
+Bet Date:2026/07/05 10:16
+Bet:England 0
+Odds:
+ 1.71 EU
+Bet Type:
+ FT Asian Handicap
+Event:Mexico vs England
+Event Date:2026/07/06 08:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 85.50 MYR
+Status:Won
+Result:2 : 3
+
+Purchase Ticket ID:861768260172587008
+Bet Ticket ID:861768260172587009
+Bet Date:2026/07/06 08:39
+Bet:Jordan Pickford Over 2.5
+Odds:
+ 2.10 EU
+Bet Type:
+ Goalkeeper Over Saves
+Event:Mexico vs England
+Event Date:2026/07/06 09:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 105.00 MYR
+Status:Won
+Result:-
+
+Purchase Ticket ID:861383911807283200
+Bet Ticket ID:861383911807283201
+Bet Date:2026/07/05 07:12
+Bet:England 0
+Odds:
+ 1.77 EU
+Bet Type:
+ 1st Half Asian Handicap
+Event:Mexico vs England
+Event Date:2026/07/06 08:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 88.50 MYR
+Status:Won
+Result:1 : 2
+
+Purchase Ticket ID:861121069241786368
+Bet Ticket ID:861121069241786369
+Bet Date:2026/07/04 13:47
+Bet:Norway +0.75
+Odds:
+ 1.83 EU
+Bet Type:
+ FT Asian Handicap
+Event:Brazil vs Norway
+Event Date:2026/07/06 04:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 91.50 MYR
+Status:Won
+Result:1 : 2
