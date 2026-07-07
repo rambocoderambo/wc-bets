@@ -179,6 +179,7 @@ R16_FIXTURES = [
         "ou_line": 2.5, "ou_over_odds": 1.975, "ou_under_odds": 1.875,
         "odds_1x2_home": 3.98, "odds_1x2_draw": 3.70, "odds_1x2_away": 1.90,
         "team1_form": "DWD", "team2_form": "DWW",
+        "result": "0-1", "result_winner": "Spain",
     },
     {
         "team1": "USA", "team2": "Belgium",
@@ -187,6 +188,7 @@ R16_FIXTURES = [
         "ou_line": 2.75, "ou_over_odds": 1.90, "ou_under_odds": 1.975,
         "odds_1x2_home": 2.70, "odds_1x2_draw": 3.48, "odds_1x2_away": 2.55,
         "team1_form": "WWL", "team2_form": "DDW",
+        "result": "0-1", "result_winner": "Belgium",
     },
     {
         "team1": "Argentina", "team2": "Egypt",
