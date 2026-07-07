@@ -1940,3 +1940,40 @@ Return:
  0.00 MYR
 Status:Lost
 Result:14 : 20
+
+
+Purchase Ticket ID:862326121671409664
+Bet Ticket ID:862326121671409665
+Bet Date:2026/07/07 21:36
+Bet:Colombia -0.25
+Odds:
+ 1.95 EU
+Bet Type:
+ FT Asian Handicap
+Event:Switzerland vs Colombia
+Event Date:2026/07/08 04:00
+League:World Cup 2026
+Stake:
+ 100.00 MYR
+Return:
+ 50.00 MYR
+Status:Half-lost
+Result:0 : 0
+
+Purchase Ticket ID:862150614649077760
+Bet Ticket ID:862150614649077761
+Bet Date:2026/07/07 09:58
+Bet:Argentina -1
+Odds:
+ 1.60 EU
+Bet Type:
+ FT Asian Handicap
+Event:Argentina vs Egypt
+Event Date:2026/07/08 00:00
+League:World Cup 2026
+Stake:
+ 150.00 MYR
+Return:
+ 150.00 MYR
+Status:Draw
+Result:3 : 2
