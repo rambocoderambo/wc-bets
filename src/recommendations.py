@@ -210,6 +210,41 @@ R16_FIXTURES = [
     },
 ]
 
+QF_FIXTURES = [
+    {
+        "team1": "France", "team2": "Morocco",
+        "date": "10/Jul 04:00",
+        "ah_line": "France -1", "ah_home_odds": 2.05, "ah_away_odds": 1.825,
+        "ou_line": 2.5, "ou_over_odds": 2.00, "ou_under_odds": 1.875,
+        "odds_1x2_home": 1.57, "odds_1x2_draw": 3.97, "odds_1x2_away": 6.23,
+        "team1_form": "WWWW", "team2_form": "DWWW",
+    },
+    {
+        "team1": "Spain", "team2": "Belgium",
+        "date": "11/Jul 03:00",
+        "ah_line": "Spain -0.75", "ah_home_odds": 1.80, "ah_away_odds": 2.10,
+        "ou_line": 2.5, "ou_over_odds": 1.825, "ou_under_odds": 2.025,
+        "odds_1x2_home": 1.61, "odds_1x2_draw": 4.05, "odds_1x2_away": 5.50,
+        "team1_form": "DWWW", "team2_form": "DDWW",
+    },
+    {
+        "team1": "Norway", "team2": "England",
+        "date": "12/Jul 05:00",
+        "ah_line": "England -0.5", "ah_home_odds": 2.00, "ah_away_odds": 1.875,
+        "ou_line": 2.75, "ou_over_odds": 1.95, "ou_under_odds": 1.925,
+        "odds_1x2_home": 4.03, "odds_1x2_draw": 3.79, "odds_1x2_away": 1.86,
+        "team1_form": "WWLW", "team2_form": "WDWW",
+    },
+    {
+        "team1": "Argentina", "team2": "Switzerland",
+        "date": "12/Jul 09:00",
+        "ah_line": "Argentina -0.75", "ah_home_odds": 1.95, "ah_away_odds": 1.90,
+        "ou_line": 2.25, "ou_over_odds": 1.975, "ou_under_odds": 1.875,
+        "odds_1x2_home": 1.73, "odds_1x2_draw": 3.47, "odds_1x2_away": 5.33,
+        "team1_form": "WWWW", "team2_form": "DWWW",
+    },
+]
+
 TEAM_FORM = {
     "Algeria": "LWD", "Argentina": "WWW",
     "Australia": "WLD", "Austria": "WLD",
@@ -269,7 +304,7 @@ def generate_recommendations(bets, metrics):
         b_t1, b_t2 = parts[0].strip(), parts[1].strip()
         match_results[key] = {"team1": b_t1, "team2": b_t2, "g1": g1, "g2": g2}
 
-    for fixture in R32_FIXTURES + R16_FIXTURES:
+    for fixture in R32_FIXTURES + R16_FIXTURES + QF_FIXTURES:
         t1 = fixture["team1"]
         t2 = fixture["team2"]
 

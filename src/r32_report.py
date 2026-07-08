@@ -66,7 +66,7 @@ def generate_live_report(bets, metrics, analysis, advice, recommendations, chart
 </head>
 <body>
 <div class="container">
-  <h1>Live R16 Predictions</h1>
+  <h1>Live QF Predictions</h1>
   <div class="subtitle">Auto-refreshes every 30s &bull; """ + str(len([r for r in recommendations if not r.get("result")])) + """ upcoming &bull; """ + str(len([r for r in recommendations if r.get("result")])) + """ completed</div>
 """
 
