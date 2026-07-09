@@ -218,6 +218,7 @@ QF_FIXTURES = [
         "ou_line": 2.5, "ou_over_odds": 2.00, "ou_under_odds": 1.875,
         "odds_1x2_home": 1.57, "odds_1x2_draw": 3.97, "odds_1x2_away": 6.23,
         "team1_form": "WWWW", "team2_form": "DWWW",
+        "result": "2-0", "result_winner": "France",
     },
     {
         "team1": "Spain", "team2": "Belgium",

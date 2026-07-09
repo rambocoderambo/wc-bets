@@ -1977,3 +1977,94 @@ Return:
  150.00 MYR
 Status:Draw
 Result:3 : 2
+
+
+Purchase Ticket ID:862503188900261888
+Bet Ticket ID:862503188900261889
+Bet Date:2026/07/08 09:19
+Bet:Over 2.5
+Odds:
+ 1.52 EU
+Bet Type:
+ Total Cards Over/Under
+Event:France vs Morocco
+Event Date:2026/07/10 04:00
+League:World Cup 2026
+Stake:
+ 100.00 MYR
+Return:
+ 0.00 MYR
+Status:Lost
+Result:0 : 1
+
+Purchase Ticket ID:862497783864332288
+Bet Ticket ID:862497783864332289
+Bet Date:2026/07/08 08:58
+Bet:France -0.75
+Odds:
+ 1.78 EU
+Bet Type:
+ FT Asian Handicap
+Event:France vs Morocco
+Event Date:2026/07/10 04:00
+League:World Cup 2026
+Stake:
+ 100.00 MYR
+Return:
+ 178.00 MYR
+Status:Won
+Result:2 : 0
+
+Purchase Ticket ID:863058087354548224
+Bet Ticket ID:863058087354548225
+Bet Date:2026/07/09 22:04
+Bet:France -1
+Odds:
+ 2.05 EU
+Bet Type:
+ FT Asian Handicap
+Event:France vs Morocco
+Event Date:2026/07/10 04:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 102.50 MYR
+Status:Won
+Result:2 : 0
+
+Purchase Ticket ID:863057963379294208
+Bet Ticket ID:863057963379294209
+Bet Date:2026/07/09 22:04
+Bet:France -0.75
+Odds:
+ 1.76 EU
+Bet Type:
+ FT Asian Handicap
+Event:France vs Morocco
+Event Date:2026/07/10 04:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 88.00 MYR
+Status:Won
+Result:2 : 0
+
+Purchase Ticket ID:863060422336167936
+Bet Ticket ID:863060422336167937
+Bet Date:2026/07/09 22:13
+Bet:Over 3.5
+Odds:
+ 1.87 EU
+Bet Type:
+ FT O/U
+Event:Chemnitzer FC vs Union Berlin
+Event Date:2026/07/10 00:30
+League:Friendly
+Stake:
+ 50.00 MYR
+Return:
+ 0.00 MYR
+Status:Lost
+Result:1 : 1
