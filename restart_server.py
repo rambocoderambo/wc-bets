@@ -65,3 +65,8 @@ if __name__ == "__main__":
         creationflags=subprocess.CREATE_NEW_PROCESS_GROUP
     )
     print("Server restarted on http://localhost:5000")
+    
+    # Open browser
+    import webbrowser
+    time.sleep(3)
+    webbrowser.open("http://localhost:5000")
