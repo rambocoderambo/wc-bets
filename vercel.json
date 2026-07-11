@@ -1,8 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "python -m pip install --break-system-packages -r requirements.txt && python main.py",
+  "buildCommand": "",
   "outputDirectory": "output",
-  "installCommand": "",
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false
