@@ -2068,3 +2068,40 @@ Return:
  0.00 MYR
 Status:Lost
 Result:1 : 1
+
+
+Purchase Ticket ID:863179065967423488
+Bet Ticket ID:863179065967423489
+Bet Date:2026/07/10 06:05
+Bet:Belgium +1
+Odds:
+ 1.77 EU
+Bet Type:
+ FT Asian Handicap
+Event:Spain vs Belgium
+Event Date:2026/07/11 03:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 50.00 MYR
+Status:Draw
+Result:2 : 1
+
+Purchase Ticket ID:862501982563905536
+Bet Ticket ID:862501982563905537
+Bet Date:2026/07/08 09:14
+Bet:Belgium +1
+Odds:
+ 1.80 EU
+Bet Type:
+ FT Asian Handicap
+Event:Spain vs Belgium
+Event Date:2026/07/11 03:00
+League:World Cup 2026
+Stake:
+ 100.00 MYR
+Return:
+ 100.00 MYR
+Status:Draw
+Result:2 : 1
