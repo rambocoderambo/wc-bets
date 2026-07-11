@@ -2105,3 +2105,76 @@ Return:
  100.00 MYR
 Status:Draw
 Result:2 : 1
+
+
+Purchase Ticket ID:863630110648610816
+Bet Ticket ID:863630110648610817
+Bet Date:2026/07/11 11:57
+Bet:England
+Odds:
+ 1.46 EU
+Bet Type:
+ To Qualify
+Event:Norway vs England
+Event Date:2026/07/12 05:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 73.00 MYR
+Status:Won
+Result:0 : 1
+
+Purchase Ticket ID:863915317205360640
+Bet Ticket ID:863915317205360641
+Bet Date:2026/07/12 06:51
+Bet:England
+Odds:
+ 1.69 EU
+Bet Type:
+ [1:1]To Qualify Live Betting
+Event:Norway vs England
+Event Date:2026/07/12 05:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 84.50 MYR
+Status:Won
+Result:0 : 1
+
+Purchase Ticket ID:863630062175092736
+Bet Ticket ID:863630062175092737
+Bet Date:2026/07/11 11:57
+Bet:England -0.5
+Odds:
+ 1.94 EU
+Bet Type:
+ FT Asian Handicap
+Event:Norway vs England
+Event Date:2026/07/12 05:00
+League:World Cup 2026
+Stake:
+ 50.00 MYR
+Return:
+ 0.00 MYR
+Status:Lost
+Result:1 : 1
+
+Purchase Ticket ID:863772402931904512
+Bet Ticket ID:863772402931904513
+Bet Date:2026/07/11 21:23
+Bet:Karolina Muchova
+Odds:
+ 1.66 EU
+Bet Type:
+ FT Winner
+Event:Karolina Muchova vs Linda Noskova
+Event Date:2026/07/12 00:05
+League:Wimbledon Women
+Stake:
+ 50.00 MYR
+Return:
+ 0.00 MYR
+Status:Lost
+Result:1 : 2
