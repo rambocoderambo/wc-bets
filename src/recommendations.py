@@ -590,7 +590,15 @@ def generate_recommendations(bets, metrics):
 
         score_reason = " ".join(score_reason_parts)
 
-        stage = f"R32: {fixture['date']}"
+        # Detect round
+        match_pair = (t1, t2)
+        if any(f["team1"] == t1 and f["team2"] == t2 for f in QF_FIXTURES):
+            round_label = "QF"
+        elif any(f["team1"] == t1 and f["team2"] == t2 for f in R16_FIXTURES):
+            round_label = "R16"
+        else:
+            round_label = "R32"
+        stage = f"{round_label}: {fixture['date']}"
 
         reason_parts = []
         for team, pnl, bcount in [(t1, team_pnl.get(t1, 0), team_bets.get(t1, 0)), (t2, team_pnl.get(t2, 0), team_bets.get(t2, 0))]:
