@@ -67,7 +67,7 @@ def generate_live_report(bets, metrics, analysis, advice, recommendations, chart
 <body>
 <div class="container">
   <h1>Live QF Predictions</h1>
-  <div class="subtitle">Auto-refreshes every 30s &bull; """ + str(len([r for r in recommendations if not r.get("result")])) + """ upcoming &bull; """ + str(len([r for r in recommendations if r.get("result")])) + """ completed</div>
+  <div class="subtitle">Auto-refreshes every 30s &bull; QF stage</div>
 """
 
     def _form_html(form):

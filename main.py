@@ -54,7 +54,7 @@ def main():
     r32_advice = generate_advice(r32_bets, r32_metrics, r32_analysis)
     print(f"  Overall: {len(analysis)} findings | GS: {len(gs_analysis)} | R32: {len(r32_analysis)}")
 
-    print("Generating R32 recommendations...")
+    print("Generating knockout recommendations...")
     recommendations = generate_recommendations(bets, metrics)
     print(f"  {len(recommendations)} match recommendations")
 
@@ -64,11 +64,11 @@ def main():
                     gs_analysis=gs_analysis, gs_advice=gs_advice,
                     r32_analysis=r32_analysis, r32_advice=r32_advice)
     
-    live_path = "output/live_r32.html"
+    live_path = "output/live_qf.html"
     generate_live_report(bets, metrics, analysis, advice, recommendations, chart_path, live_path)
     import shutil
     shutil.copy2(live_path, "output/index.html")
-    print(f"  Live R32 report: file://{os.path.abspath(live_path)}")
+    print(f"  Live QF report: file://{os.path.abspath(live_path)}")
     
     print(f"\nDone! Dashboard saved to {output_path}")
     print(f"Open in browser: file://{os.path.abspath(output_path)}")
