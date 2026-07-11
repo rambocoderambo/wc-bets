@@ -10,7 +10,7 @@ def generate_live_report(bets, metrics, analysis, advice, recommendations, chart
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content="30">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live R32 Predictions</title>
+<title>Live QF Predictions</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1114; color: #d4d4d4; padding: 20px; }
@@ -146,7 +146,7 @@ def generate_live_report(bets, metrics, analysis, advice, recommendations, chart
     # ===== R32 PREDICTIONS =====
     html += """<div class="rec-section"><div class="rec-card">
   <div class="rec-header">
-    <h2> Round 32 Prediction</h2>
+    <h2> QF — Quarterfinal Predictions</h2>
     <div class="roi-badge">Target: 80% Win Rate</div>
   </div>
 """
@@ -202,7 +202,7 @@ def generate_live_report(bets, metrics, analysis, advice, recommendations, chart
 
         html += """</div></div>"""
 
-    html += f"""<div class="footer-note">Live R32 Dashboard — Auto-refreshes every 30s &bull; Generated at {__import__('datetime').datetime.now().strftime('%H:%M:%S')} &bull; <a href="/" style="color:#5b8def;text-decoration:none;">Full Dashboard</a></div>
+    html += f"""<div class="footer-note">Live QF Dashboard — Auto-refreshes every 30s &bull; Generated at {__import__('datetime').datetime.now().strftime('%H:%M:%S')} &bull; <a href="/" style="color:#5b8def;text-decoration:none;">Full Dashboard</a></div>
 </div>
 </body>
 </html>"""
