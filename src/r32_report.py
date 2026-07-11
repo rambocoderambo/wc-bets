@@ -66,7 +66,7 @@ def generate_live_report(bets, metrics, analysis, advice, recommendations, chart
 </head>
 <body>
 <div class="container">
-  <h1>Live QF Predictions</h1>
+  <h1>Live QF — Quarterfinal Predictions</h1>
   <div class="subtitle">Auto-refreshes every 30s &bull; QF stage</div>
 """
 
