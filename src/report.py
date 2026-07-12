@@ -3,7 +3,8 @@ from completed_render import render_completed
 
 
 def generate_report(bets, metrics, analysis, advice, recommendations, chart_path, output_path="output/dashboard.html",
-                    gs_analysis=None, gs_advice=None, r32_analysis=None, r32_advice=None):
+                    gs_analysis=None, gs_advice=None, r32_analysis=None, r32_advice=None,
+                    r16_analysis=None, r16_advice=None, qf_analysis=None, qf_advice=None):
     chart_html = ""
     if os.path.exists(chart_path):
         with open(chart_path, "r", encoding="utf-8") as f:
@@ -441,6 +442,10 @@ def generate_report(bets, metrics, analysis, advice, recommendations, chart_path
         html += _render_block("Group Stage (Before R32)", gs_analysis, gs_advice)
     if r32_analysis and r32_advice:
         html += _render_block("Round of 32", r32_analysis, r32_advice)
+    if r16_analysis and r16_advice:
+        html += _render_block("Round of 16", r16_analysis, r16_advice)
+    if qf_analysis and qf_advice:
+        html += _render_block("Quarterfinals", qf_analysis, qf_advice)
     html += _render_block("Overall (All Bets)", analysis, advice)
 
     html += """
