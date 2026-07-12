@@ -249,6 +249,25 @@ QF_FIXTURES = [
     },
 ]
 
+SF_FIXTURES = [
+    {
+        "team1": "France", "team2": "Spain",
+        "date": "15/Jul 03:00",
+        "ah_line": "France -0.25", "ah_home_odds": 1.95, "ah_away_odds": 1.90,
+        "ou_line": 2.25, "ou_over_odds": 1.875, "ou_under_odds": 1.975,
+        "odds_1x2_home": 2.31, "odds_1x2_draw": 3.31, "odds_1x2_away": 3.20,
+        "team1_form": "WWWWW", "team2_form": "DWWWW",
+    },
+    {
+        "team1": "England", "team2": "Argentina",
+        "date": "16/Jul 03:00",
+        "ah_line": "England 0", "ah_home_odds": 1.90, "ah_away_odds": 1.95,
+        "ou_line": 2.25, "ou_over_odds": 1.825, "ou_under_odds": 2.025,
+        "odds_1x2_home": 2.54, "odds_1x2_draw": 3.02, "odds_1x2_away": 3.05,
+        "team1_form": "WDWWW", "team2_form": "WWWWW",
+    },
+]
+
 TEAM_FORM = {
     "Algeria": "LWD", "Argentina": "WWW",
     "Australia": "WLD", "Austria": "WLD",
@@ -308,7 +327,7 @@ def generate_recommendations(bets, metrics):
         b_t1, b_t2 = parts[0].strip(), parts[1].strip()
         match_results[key] = {"team1": b_t1, "team2": b_t2, "g1": g1, "g2": g2}
 
-    for fixture in R32_FIXTURES + R16_FIXTURES + QF_FIXTURES:
+    for fixture in R32_FIXTURES + R16_FIXTURES + QF_FIXTURES + SF_FIXTURES:
         t1 = fixture["team1"]
         t2 = fixture["team2"]
 
@@ -594,7 +613,9 @@ def generate_recommendations(bets, metrics):
 
         # Detect round
         match_pair = (t1, t2)
-        if any(f["team1"] == t1 and f["team2"] == t2 for f in QF_FIXTURES):
+        if any(f["team1"] == t1 and f["team2"] == t2 for f in SF_FIXTURES):
+            round_label = "SF"
+        elif any(f["team1"] == t1 and f["team2"] == t2 for f in QF_FIXTURES):
             round_label = "QF"
         elif any(f["team1"] == t1 and f["team2"] == t2 for f in R16_FIXTURES):
             round_label = "R16"

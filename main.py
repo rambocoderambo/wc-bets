@@ -6,7 +6,7 @@ from parser import parse_bets
 from metrics import calculate_metrics
 from visualize import generate_chart
 from analysis import generate_analysis, generate_advice
-from recommendations import generate_recommendations, R32_FIXTURES, R16_FIXTURES, QF_FIXTURES
+from recommendations import generate_recommendations, R32_FIXTURES, R16_FIXTURES, QF_FIXTURES, SF_FIXTURES
 from report import generate_report
 from r32_report import generate_live_report
 
@@ -16,14 +16,17 @@ def split_bets(bets):
     def _events(fixtures):
         return {f"{f['team1']} vs {f['team2']}" for f in fixtures}
     
+    sf_evts = _events(SF_FIXTURES)
     qf_evts = _events(QF_FIXTURES)
     r16_evts = _events(R16_FIXTURES)
     r32_evts = _events(R32_FIXTURES)
     
-    gs, r32, r16, qf = [], [], [], []
+    gs, r32, r16, qf, sf = [], [], [], [], []
     for b in bets:
         evt = b.get("event", "")
-        if evt in qf_evts:
+        if evt in sf_evts:
+            sf.append(b)
+        elif evt in qf_evts:
             qf.append(b)
         elif evt in r16_evts:
             r16.append(b)
@@ -31,7 +34,7 @@ def split_bets(bets):
             r32.append(b)
         else:
             gs.append(b)
-    return gs, r32, r16, qf
+    return gs, r32, r16, qf, sf
 
 
 def main():
@@ -39,8 +42,8 @@ def main():
     bets = parse_bets("data/Bets.txt")
     print(f"  {len(bets)} bets parsed")
 
-    gs_bets, r32_bets, r16_bets, qf_bets = split_bets(bets)
-    print(f"  GS: {len(gs_bets)} | R32: {len(r32_bets)} | R16: {len(r16_bets)} | QF: {len(qf_bets)}")
+    gs_bets, r32_bets, r16_bets, qf_bets, sf_bets = split_bets(bets)
+    print(f"  GS: {len(gs_bets)} | R32: {len(r32_bets)} | R16: {len(r16_bets)} | QF: {len(qf_bets)} | SF: {len(sf_bets)}")
 
     print("Calculating metrics...")
     metrics = calculate_metrics(bets)
@@ -48,7 +51,8 @@ def main():
     r32_metrics = calculate_metrics(r32_bets) if r32_bets else None
     r16_metrics = calculate_metrics(r16_bets) if r16_bets else None
     qf_metrics = calculate_metrics(qf_bets) if qf_bets else None
-    print(f"  P&L: Overall={metrics['total_pnl']} | GS={gs_metrics['total_pnl'] if gs_metrics else 0} | R32={r32_metrics['total_pnl'] if r32_metrics else 0} | R16={r16_metrics['total_pnl'] if r16_metrics else 0} | QF={qf_metrics['total_pnl'] if qf_metrics else 0}")
+    sf_metrics = calculate_metrics(sf_bets) if sf_bets else None
+    print(f"  P&L: Overall={metrics['total_pnl']} | GS={gs_metrics['total_pnl'] if gs_metrics else 0} | R32={r32_metrics['total_pnl'] if r32_metrics else 0} | R16={r16_metrics['total_pnl'] if r16_metrics else 0} | QF={qf_metrics['total_pnl'] if qf_metrics else 0} | SF={sf_metrics['total_pnl'] if sf_metrics else 0}")
 
     print("Generating chart...")
     chart_path = "output/cumulative_pnl.html"
