@@ -2215,3 +2215,40 @@ Return:
  82.50 MYR
 Status:Won
 Result:1 : 1
+
+
+Purchase Ticket ID:863723772141330432
+Bet Ticket ID:863723772141330433
+Bet Date:2026/07/11 18:09
+Bet:Max Holloway
+Odds:
+ 1.42 EU
+Bet Type:
+ FT Moneyline
+Event:Conor McGregor vs Max Holloway
+Event Date:2026/07/12 11:15
+League:UFC 329
+Stake:
+ 100.00 MYR
+Return:
+ 142.00 MYR
+Status:Won
+Result:0 : 1
+
+Purchase Ticket ID:863982585624834048
+Bet Ticket ID:863982585624834049
+Bet Date:2026/07/12 11:18
+Bet:Max Holloway
+Odds:
+ 1.43 EU
+Bet Type:
+ FT Moneyline
+Event:Conor McGregor vs Max Holloway
+Event Date:2026/07/12 11:35
+League:UFC 329
+Stake:
+ 50.00 MYR
+Return:
+ 71.50 MYR
+Status:Won
+Result:0 : 1

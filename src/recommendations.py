@@ -245,7 +245,7 @@ QF_FIXTURES = [
         "ou_line": 2.25, "ou_over_odds": 1.975, "ou_under_odds": 1.875,
         "odds_1x2_home": 1.73, "odds_1x2_draw": 3.47, "odds_1x2_away": 5.33,
         "team1_form": "WWWW", "team2_form": "DWWW",
-        "result": "1-1", "result_winner": "Draw",
+        "result": "1-3", "result_winner": "Argentina",
     },
 ]
 
