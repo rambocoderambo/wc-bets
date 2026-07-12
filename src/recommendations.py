@@ -647,14 +647,13 @@ def generate_recommendations(bets, metrics):
 
     # Sort: upcoming first (by date asc), then completed (by date desc = latest on top)
     def _sort_key(r):
-        date_str = r.get("stage", "").replace("R32: ", "")
+        date_str = r.get("stage", "").replace("R32: ", "").replace("R16: ", "").replace("QF: ", "")
         try:
             from datetime import datetime
             dt = datetime.strptime(date_str, "%d/%b %H:%M")
         except ValueError:
             dt = datetime.max
         is_completed = 1 if r.get("result") else 0
-        # Completed matches: negate combined datetime ordinal + minute so latest comes first
         sort_dt = -(dt.toordinal() * 1440 + dt.hour * 60 + dt.minute) if is_completed else (dt.toordinal() * 1440 + dt.hour * 60 + dt.minute)
         return (is_completed, sort_dt)
     recs.sort(key=_sort_key)
