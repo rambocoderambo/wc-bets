@@ -169,8 +169,8 @@ def generate_report(bets, metrics, analysis, advice, recommendations, chart_path
     <div class="rec-card">
       <div class="rec-header">
         <div>
-          <h2> Quarterfinal Predictions</h2>
-          <div style="font-size:13px;color:#9ca3a0;margin-top:4px;">Asian Handicap &amp; O/U picks for the remaining QF matches</div>
+          <h2> Semifinal Predictions</h2>
+          <div style="font-size:13px;color:#9ca3a0;margin-top:4px;">Asian Handicap &amp; O/U picks — data from group stage through QF</div>
         </div>
         <div class="roi-badge">Target: 80% Win Rate</div>
       </div>

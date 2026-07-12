@@ -66,7 +66,7 @@ def generate_live_report(bets, metrics, analysis, advice, recommendations, chart
 </head>
 <body>
 <div class="container">
-  <h1>Live QF — Quarterfinal Predictions</h1>
+  <h1>Live SF — Semifinal Predictions</h1>
   <div class="subtitle">Auto-refreshes every 30s &bull; QF stage</div>
 """
 
@@ -146,7 +146,7 @@ def generate_live_report(bets, metrics, analysis, advice, recommendations, chart
     # ===== R32 PREDICTIONS =====
     html += """<div class="rec-section"><div class="rec-card">
   <div class="rec-header">
-    <h2> QF — Quarterfinal Predictions</h2>
+    <h2> SF — Semifinal Predictions</h2>
     <div class="roi-badge">Target: 80% Win Rate</div>
   </div>
 """
