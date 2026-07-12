@@ -641,7 +641,7 @@ def generate_recommendations(bets, metrics):
         else:
             score_reason_parts.append(f"Total {total_g}g = O/U {ou_line} (push).")
 
-        score_reason = " ".join(score_reason_parts)
+        score_reason = "<br>".join(score_reason_parts)
 
         # Detect round
         match_pair = (t1, t2)
