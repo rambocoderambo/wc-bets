@@ -257,6 +257,17 @@ SF_FIXTURES = [
         "ou_line": 2.25, "ou_over_odds": 1.875, "ou_under_odds": 1.975,
         "odds_1x2_home": 2.31, "odds_1x2_draw": 3.31, "odds_1x2_away": 3.20,
         "team1_form": "WWWWW", "team2_form": "DWWWW",
+        "pick_reason": (
+            "Why France -0.25? "
+            "1) France has scored 16 goals in 6 matches (2.67 avg) — scored 2+ in 5 of 6. "
+            "2) France has 6 wins from 6 — never trailed, never needed extra time. "
+            "3) France defense: only 2 GA in 6 matches — kept 4 clean sheets. "
+            "4) Spain conceded their first goal of the tournament in QF vs Belgium — knockout pressure cracks. "
+            "5) France -0.25 at 1.95 offers value: a 1-0 win covers the spread. "
+            "6) Spain needed a 90+1' winner vs Portugal — their knockout path has been tight. "
+            "7) France scored 3+ goals in GS (3-1, 3-0, 4-1) and 3-0 in R32 — proven firepower. "
+            "8) Goal differential: France +14 vs Spain +10 across all matches."
+        ),
     },
     {
         "team1": "England", "team2": "Argentina",
@@ -265,6 +276,17 @@ SF_FIXTURES = [
         "ou_line": 2.25, "ou_over_odds": 1.825, "ou_under_odds": 2.025,
         "odds_1x2_home": 2.54, "odds_1x2_draw": 3.02, "odds_1x2_away": 3.05,
         "team1_form": "WDWWW", "team2_form": "WWWWW",
+        "pick_reason": (
+            "Why England 0 (PK)? "
+            "1) PK = draw pushes — Argentina must win outright. In a cautious SF, this is valuable protection. "
+            "2) Argentina played 120+ minutes TWICE (Cape Verde R32, Switzerland QF) — fatigue is a real factor. "
+            "3) England scored in all 6 matches (13 goals, 2.17 avg) — consistent attacking threat. "
+            "4) Argentina conceded in 3 of 5 matches — England has the firepower to exploit this. "
+            "5) England fought back from 1-0 down vs Norway to win AET — shows resilience. "
+            "6) 1X2 market: England 2.54 vs Argentina 3.05 — England is the favorite to win. "
+            "7) Argentina's AET matches: 3-2 vs Cape Verde (conceded 2), 3-1 vs Switzerland AET — vulnerable. "
+            "8) England's knockout wins: 2-1 (DR Congo), 3-2 (Mexico), 2-1 AET (Norway) — winning experience."
+        ),
     },
 ]
 
@@ -661,6 +683,7 @@ def generate_recommendations(bets, metrics):
             "predicted_score": likely_score, "picks": picks,
             "reason": ". ".join(reason_parts) + ".",
             "score_reason": score_reason,
+            "pick_reason": fixture.get("pick_reason"),
             "team1_form": form_fav, "team2_form": form_under,
             "h2h": h2h,
             "result": detected_result,

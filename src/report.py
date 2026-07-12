@@ -211,7 +211,11 @@ def generate_report(bets, metrics, analysis, advice, recommendations, chart_path
         form1 = _form_html(rec.get("team1_form", ""))
         form2 = _form_html(rec.get("team2_form", ""))
 
-        extra_html = f'<div class="rec-picks">{picks_html}</div><div class="rec-reason">{rec["reason"]}</div><div class="rec-reason" style="margin-top:6px;font-size:12px;cursor:pointer;color:#5b8def;" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display===&quot;block&quot;?&quot;none&quot;:&quot;block&quot;;">[+] Score Analysis</div><div class="rec-reason" style="display:none;margin-top:6px;padding:10px;background:#13181d;border-radius:6px;font-size:12px;line-height:1.7;color:#c8c6c0;">' + (rec.get("score_reason", "No detailed analysis available.") or "") + '</div>'
+        score_analysis = (rec.get("score_reason", "No detailed analysis available.") or "")
+        pick_reason = rec.get("pick_reason")
+        if pick_reason:
+            score_analysis = pick_reason + "<br><br><b>Additional analysis:</b> " + score_analysis
+        extra_html = f'<div class="rec-picks">{picks_html}</div><div class="rec-reason">{rec["reason"]}</div><div class="rec-reason" style="margin-top:6px;font-size:12px;cursor:pointer;color:#5b8def;" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display===&quot;block&quot;?&quot;none&quot;:&quot;block&quot;;">[+] Score Analysis</div><div class="rec-reason" style="display:none;margin-top:6px;padding:10px;background:#13181d;border-radius:6px;font-size:12px;line-height:1.7;color:#c8c6c0;">' + score_analysis + '</div>'
 
         html += f"""
       <div class="rec-match">
