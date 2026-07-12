@@ -655,18 +655,27 @@ def generate_recommendations(bets, metrics):
             round_label = "R32"
         stage = f"{round_label}: {fixture['date']}"
 
+        def _bet_summary(team, pnl, bcount):
+            if bcount == 0:
+                return f"You've never bet on {team}."
+            profit_word = "made" if pnl > 0 else "lost"
+            return f"On {team}: you've placed {bcount} bets and {profit_word} MYR {abs(pnl):.0f} total."
+
+        def _form_summary(team, form_str):
+            wins = form_str.count("W")
+            losses = form_str.count("L")
+            last_n = len(form_str)
+            if wins == last_n:
+                return f"{team} won all of their last {last_n} matches ({form_str})."
+            if losses == last_n:
+                return f"{team} lost all of their last {last_n} matches ({form_str})."
+            return f"{team}'s recent form is {_form_desc(form_str)} ({form_str})."
+
         reason_parts = []
         for team, pnl, bcount in [(t1, team_pnl.get(t1, 0), team_bets.get(t1, 0)), (t2, team_pnl.get(t2, 0), team_bets.get(t2, 0))]:
-            if bcount > 0:
-                s = f"+MYR {pnl:.0f}" if pnl > 0 else f"-MYR {abs(pnl):.0f}"
-                reason_parts.append(f"{team} {s} ({bcount}b)")
-            else:
-                reason_parts.append(f"{team} no bets on record")
-
-        f_fav_desc = _form_desc(form_fav)
-        f_under_desc = _form_desc(form_under)
-        reason_parts.append(f"{fav_team} {f_fav_desc} ({form_fav})")
-        reason_parts.append(f"{under_team} {f_under_desc} ({form_under})")
+            reason_parts.append(_bet_summary(team, pnl, bcount))
+        reason_parts.append(_form_summary(fav_team, form_fav))
+        reason_parts.append(_form_summary(under_team, form_under))
 
         # 1X2 value angle
         if fixture["odds_1x2_home"] < 1.5:
