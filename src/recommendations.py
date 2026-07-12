@@ -258,15 +258,15 @@ SF_FIXTURES = [
         "odds_1x2_home": 2.31, "odds_1x2_draw": 3.31, "odds_1x2_away": 3.20,
         "team1_form": "WWWWW", "team2_form": "DWWWW",
         "pick_reason": (
-            "Why France -0.25? "
-            "1) France has scored 16 goals in 6 matches (2.67 avg) — scored 2+ in 5 of 6. "
-            "2) France has 6 wins from 6 — never trailed, never needed extra time. "
-            "3) France defense: only 2 GA in 6 matches — kept 4 clean sheets. "
-            "4) Spain conceded their first goal of the tournament in QF vs Belgium — knockout pressure cracks. "
-            "5) France -0.25 at 1.95 offers value: a 1-0 win covers the spread. "
-            "6) Spain needed a 90+1' winner vs Portugal — their knockout path has been tight. "
-            "7) France scored 3+ goals in GS (3-1, 3-0, 4-1) and 3-0 in R32 — proven firepower. "
-            "8) Goal differential: France +14 vs Spain +10 across all matches."
+            "<b>Why France -0.25?</b><br>"
+            "1) France scored 16 goals in 6 matches (2.67 avg) — scored 2+ in 5 of 6.<br>"
+            "2) France has 6 wins from 6 — never trailed, never needed extra time.<br>"
+            "3) France defense: only 2 GA in 6 matches — kept 4 clean sheets.<br>"
+            "4) Spain conceded their 1st goal in QF vs Belgium — knockout pressure shows.<br>"
+            "5) France -0.25 at 1.95: a 1-0 win covers the spread — strong value.<br>"
+            "6) Spain needed a 90+1' winner vs Portugal — their path has been tight.<br>"
+            "7) France scored 3+ in GS (3-1, 3-0, 4-1) and 3-0 in R32 — proven firepower.<br>"
+            "8) Goal differential: France +14 vs Spain +10 across all 6 matches."
         ),
     },
     {
@@ -277,15 +277,15 @@ SF_FIXTURES = [
         "odds_1x2_home": 2.54, "odds_1x2_draw": 3.02, "odds_1x2_away": 3.05,
         "team1_form": "WDWWW", "team2_form": "WWWWW",
         "pick_reason": (
-            "Why England 0 (PK)? "
-            "1) PK = draw pushes — Argentina must win outright. In a cautious SF, this is valuable protection. "
-            "2) Argentina played 120+ minutes TWICE (Cape Verde R32, Switzerland QF) — fatigue is a real factor. "
-            "3) England scored in all 6 matches (13 goals, 2.17 avg) — consistent attacking threat. "
-            "4) Argentina conceded in 3 of 5 matches — England has the firepower to exploit this. "
-            "5) England fought back from 1-0 down vs Norway to win AET — shows resilience. "
-            "6) 1X2 market: England 2.54 vs Argentina 3.05 — England is the favorite to win. "
-            "7) Argentina's AET matches: 3-2 vs Cape Verde (conceded 2), 3-1 vs Switzerland AET — vulnerable. "
-            "8) England's knockout wins: 2-1 (DR Congo), 3-2 (Mexico), 2-1 AET (Norway) — winning experience."
+            "<b>Why England 0 (PK)?</b><br>"
+            "1) PK = draw pushes — Argentina must win outright. In a cautious SF, this is valuable protection.<br>"
+            "2) Argentina played 120+ minutes TWICE (Cape Verde R32, Switzerland QF) — fatigue factor.<br>"
+            "3) England scored in all 6 matches (13 goals, 2.17 avg) — consistent attacking threat.<br>"
+            "4) Argentina conceded in 3 of 5 matches — England can exploit this.<br>"
+            "5) England came from 1-0 down vs Norway to win AET — resilience under pressure.<br>"
+            "6) 1X2 market: England 2.54 vs Argentina 3.05 — England is the favorite.<br>"
+            "7) Argentina's AET matches: 3-2 vs Cape Verde, 3-1 vs Switzerland — vulnerable defensively.<br>"
+            "8) England's knockout record: 2-1 (DRC), 3-2 (Mexico), 2-1 AET (Norway) — winning experience."
         ),
     },
 ]
