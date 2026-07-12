@@ -7,10 +7,20 @@ from group_results import GROUP_MATCHES
 
 
 def compute_team_goals(bets=None):
-    """Compute average goals scored/conceded for each team from ALL group matches."""
+    """Compute average goals scored/conceded for each team from ALL matches (GS + knockout)."""
     matches = defaultdict(list)
+    # Group stage
     for t1, t2, score in GROUP_MATCHES:
         parts = score.split("-")
+        g1, g2 = int(parts[0]), int(parts[1])
+        matches[t1].append({"gf": g1, "ga": g2})
+        matches[t2].append({"gf": g2, "ga": g1})
+    # Knockout rounds (R32 + R16 + QF)
+    for fixture in R32_FIXTURES + R16_FIXTURES + QF_FIXTURES:
+        if not fixture.get("result"):
+            continue
+        t1, t2 = fixture["team1"], fixture["team2"]
+        parts = fixture["result"].split("-")
         g1, g2 = int(parts[0]), int(parts[1])
         matches[t1].append({"gf": g1, "ga": g2})
         matches[t2].append({"gf": g2, "ga": g1})
