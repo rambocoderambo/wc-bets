@@ -287,15 +287,15 @@ SF_FIXTURES = [
         "odds_1x2_home": 2.54, "odds_1x2_draw": 3.02, "odds_1x2_away": 3.05,
         "team1_form": "WDWWW", "team2_form": "WWWWW",
         "pick_reason": (
-            "<b>Why England 0 (PK)?</b><br>"
-            "1) PK = draw pushes — Argentina must win outright. In a cautious SF, this is valuable protection.<br>"
-            "2) Argentina played 120+ minutes TWICE (Cape Verde R32, Switzerland QF) — fatigue factor.<br>"
-            "3) England scored in all 6 matches (13 goals, 2.17 avg) — consistent attacking threat.<br>"
-            "4) Argentina conceded in 3 of 5 matches — England can exploit this.<br>"
-            "5) England came from 1-0 down vs Norway to win AET — resilience under pressure.<br>"
-            "6) 1X2 market: England 2.54 vs Argentina 3.05 — England is the favorite.<br>"
-            "7) Argentina's AET matches: 3-2 vs Cape Verde, 3-1 vs Switzerland — vulnerable defensively.<br>"
-            "8) England's knockout record: 2-1 (DRC), 3-2 (Mexico), 2-1 AET (Norway) — winning experience."
+            "<b>Why Argentina +0.25?</b><br>"
+            "1) Argentina's attack: 14 goals in 5 matches (2.80 avg) — tournament's best scoring rate.<br>"
+            "2) Argentina +0.25 means a draw wins half, Argentina win wins full. Strong protection.<br>"
+            "3) England conceded in 4 of 6 matches (1.00 GA avg) — Argentina can exploit this.<br>"
+            "4) Argentina won every match they've played (5-0-0) — tested by extra time twice.<br>"
+            "5) PK line was mispriced — Argentina should be the favorite, not underdog.<br>"
+            "6) 1X2 odds: Argentina 3.05 offers strong value if they win outright.<br>"
+            "7) Argentina scored 3+ goals in 3 of 5 matches — consistent firepower.<br>"
+            "8) England needed extra time vs Norway — fatigue could be a factor against Argentina's press."
         ),
     },
 ]
