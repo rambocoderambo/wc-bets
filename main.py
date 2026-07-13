@@ -86,7 +86,7 @@ def main():
     live_path = "output/live_qf.html"
     generate_live_report(bets, metrics, analysis, advice, recommendations, chart_path, live_path)
     import shutil
-    shutil.copy2(live_path, "output/index.html")
+    shutil.copy2(output_path, "output/index.html")
     print(f"  Live QF report: file://{os.path.abspath(live_path)}")
     
     print(f"\nDone! Dashboard saved to {output_path}")
