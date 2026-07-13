@@ -126,10 +126,12 @@ enum TransactionType {
 
 ### 4.3 Status outcome buckets
 
+The Prisma enum keeps all 9 statuses distinct (for accuracy in the DB and to support granular analysis in Phase 2). For Phase 1 dashboard win-rate and pie chart, they collapse into 4 buckets:
+
 - Won = `WON`, `HALF_WON`, `CASHED_OUT`
 - Lost = `LOST`, `HALF_LOST`
 - Push = `PUSH`, `DRAW`, `VOID`
-- Active = `PENDING` ( unsettled — not shown in win-rate, excluded from settled P/L)
+- Active = `PENDING` (unsettled — excluded from win-rate and settled P/L, surfaced only in Active Bets section)
 
 ## 5. Main Dashboard Page
 
